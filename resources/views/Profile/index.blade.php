@@ -40,6 +40,8 @@
             </ul>
     </div>
     <div class="row">
+
+        @if(isset(\Auth::user()->profile))
         <table class="table table-hover">
             <h4>Your profil: {{\Auth::user()->profile->name_profile}}</h4>
             <tr>
@@ -51,8 +53,26 @@
                 <td>{{\Auth::user()->profile->surname_profile}}</td>
             </tr>
         </table>
+            <form method="post" action="{{route('profile.edit')}}">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <button class="btn btn-warning" > EDYTUJ</button>
+            </form>
+            <br>
+            <form method="post" action="{{route('profile.destroy')}}" >
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <button class="btn btn-danger" id="deleteProfileBtn">WYKASUJ</button>
+            </form>
+        @else
+            <h2> Uzupełnij swoje dane</h2>
+            <span>jest to niezbędne do uzyskania wszystkich funkcji twojego profilu</span>
+        @endif
+
     </div>
 
 
+    {{-- scritpt only for edit profile page--}}
+@endsection
 
+@section('script-js')
+    <script src="{{ asset('js/test.js') }}"></script>
 @endsection

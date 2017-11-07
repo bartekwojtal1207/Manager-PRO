@@ -13,6 +13,9 @@
 
 Route::get('/','mainPageController@index');
 
+/*
+ * display, update, edit & destroy data "PROFILES"
+ */
 Route::get('/profile',[
     'uses'=> 'ProfileController@index',
     'as'=> 'profile.index'
@@ -22,6 +25,21 @@ Route::get('/profile',[
 Route::post('/addDataProfile',[
     'uses'=> 'ProfileController@store',
     'as'=> 'profile.store'
+]);
+
+Route::post('/editProfile', [
+    'uses'=>'ProfileController@edit',
+    'as'=>'profile.edit'
+]);
+
+Route::post('/updateProfile', [
+    'uses'=>'ProfileController@update',
+    'as'=>'profile.update'
+]);
+
+Route::post('/deleteProfile',[
+    'uses'=>'ProfileController@destroy',
+    'as'=>'profile.destroy'
 ]);
 
 Auth::routes();

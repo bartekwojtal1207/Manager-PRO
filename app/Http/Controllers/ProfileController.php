@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
+
 class ProfileController extends Controller
 {
 
+    public $currentIdUser ;
     public function __construct()
     {
         $this->middleware('auth');
+
+//        $currentIdUser = $this->currentIdUser;
+
     }
     /**
      * Display a listing of the resource.
@@ -22,8 +27,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
-        $currentProfile = \Auth::user()->profile;
+        $currentIdUser = \Auth::user()->id;
+//        dd($currentIdUser);
 //         udalo sie !!!!!!!!!!
         return view('Profile.index');
     }
@@ -83,7 +88,8 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        $profiles = DB::table('profiles')->get();
+        $currentId = \Auth::user()->id;
+        $profiles = DB::table('profiles')->where('user_id', $currentId)->get();
         return view('Profile.edit', ['profiles' => $profiles]);
     }
 
@@ -123,8 +129,15 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $currentIdUser = \Auth::user()->id;
+
+        $profiles = DB::table('profiles')
+            ->where('user_id', $currentIdUser)
+            ->whereNotNull('updated_at')
+            ->delete();
+
+        return redirect('profile');
     }
 }

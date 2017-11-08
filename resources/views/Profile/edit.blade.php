@@ -5,7 +5,10 @@
 @section('content')
 
     @foreach ($profiles as $profile)
-        <h2 style="color: cadetblue">{{$profile->name_profile}}</h2>
+
+       {{ dd($profile)}}
+        {{--nie potrzebne foreach bo jeden user zawsze moze miec tylko jedne profil ( w tej chwili !!!) --}}
+        {{--<h2 style="color: cadetblue">{{$profile->name_profile}}</h2>--}}
         <form method="post" action="{{route('profile.update')}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <label for="name_profile_edit" style="color: aliceblue">Edytuj swoje imię</label>
@@ -13,7 +16,7 @@
             <input type="text" name="name_profile_edit">
             <input type="submit" value="EDYTUJ imię" class="btn btn-danger">
         {{--</form>--}}
-        <h2 style="color: cadetblue">{{$profile->surname_profile}}</h2>
+        {{--<h2 style="color: cadetblue">{{$profile->surname_profile}}</h2>--}}
         {{--<form method="post" action="{{route('profile.update')}}">--}}
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <label for="surname_profile_edit" style="color: aliceblue">Edytuj swoje nazwisko</label>

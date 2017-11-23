@@ -5,37 +5,41 @@
 
 @section('content')
 
+
+
     @if(isset(\Auth::user()->profile))
         <h4>Your profil: {{\Auth::user()->profile->name_profile}}</h4>
     <div class="row" style="display: flex;">
+        @foreach( $profiles as $profile)
         <table class="table table-hover table-responsive" style="width: 35%;display: inline-block" >
             <tr>
                 <th>Firstname</th>
-                <td class="table-cell">{{\Auth::user()->profile->name_profile}}</td>
+                <td class="table-cell">{{$profile->name_profile}} </td>
             </tr>
             <tr>
                 <th>Lastname</th>
-                <td>{{\Auth::user()->profile->surname_profile}}</td>
+                <td>{{$profile->surname_profile}} </td>
             </tr>
             <tr>
-                <th>birthday_profile</th>
-                <td>birthday_profile</td>
+                <th> Birthday: </th>
+                <td>{{$profile->birthday_profile}} </td>
             </tr>
                 <th>Twoja narodowość</th>
-                <td>Twoja narodowość</td>
+                <td>{{$profile->country_profile}}</td>
             </tr>
             <tr>
                 <th>Nr telefonu: </th>
-                <td>123456798</td>
+                <td>{{$profile->tel_profile}}</td>
             </tr>
             <tr>
                 <th>adres mailowy:</th>
-                <td>aksdjkasjdka@wp.pl</td>
+                <td>{{Auth::user()->email}}</td>
             </tr>
         </table>
             <div class="image" style="display: inline-block">
                 <img src="#" alt="nowe foto">
             </div>
+        @endforeach
     </div>
     <div class="row" style="display: inline-block">
         <form method="post" action="{{route('profile.edit')}}">

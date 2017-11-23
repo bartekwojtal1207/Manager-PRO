@@ -3,23 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\Providers\AppServiceProvider;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Collection;
+use phpDocumentor\Reflection\Types\This;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Cache\Factory;
+use Illuminate\Contracts\Cache\Repository;
 
 class ProfileController extends Controller
 {
 
-    public $currentIdUser ;
+    public $testID ;
+
     public function __construct()
     {
         $this->middleware('auth');
 
-//        $currentIdUser = $this->currentIdUser;
 
     }
+    public function setTestID($id)
+    {
+//        $this->testID = $id;
+//        Cache::put($this->testID, $id);
+        echo  $this->testID ;
+    }
+
+    public function getTestID()
+    {
+//        echo 'get';
+//        Cache::get($this->testID);
+//        return $this->testID;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,16 +48,27 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $currentIdUser = \Auth::user()->id;
-//        dd($currentIdUser);
-//         udalo sie !!!!!!!!!!
-        return view('Profile.index');
+//dd($this);
+        $id = \Auth::user()->id;
+        $this->setTestID($id);
+
+        $profiles = DB::table('profiles')
+            ->where('user_id', $id)
+            ->get();
+
+        return view('Profile.index', ['profiles' => $profiles]);
     }
 
-    public function save(Request $request)
+    public function save()
     {
+//        $id = \Auth::user()->id;
+//        $this->setTestID($id);
+//        echo "<br/>";
+//        echo $this->testID;
 
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -56,17 +88,20 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $currentId = \Auth::user()->id;
+        $id = \Auth::user()->id;
         $currentProfile = \Auth::user()->profile;// udalo sie !!!!!!!!!!
 
         $profile = new Profile();
+
         $profile->name_profile = $request->input('name_profile');
         $profile->surname_profile = $request->input('surname_profile');
-        $profile->user_id = $currentId;
-//////        $profile->birthday_profile = $request->input('birthday_profile');
-//////        $profile->phone_profile = $request->input('phone_profile');
-        $profile->save();
+        $profile->user_id = $id;
+        $profile->birthday_profile = $request->input('birthday_profile');
+        $profile->tel_profile = $request->input('phone_profile');
+        $profile->country_profile = $request->input('country_profile');
 
+        $profile->save();
+        dd($profile);
     }
 
     /**
@@ -75,9 +110,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
     }
 
     /**
@@ -88,8 +123,14 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        $currentId = \Auth::user()->id;
-        $profiles = DB::table('profiles')->where('user_id', $currentId)->get();
+//        $this->getTestID();
+
+
+        $id = \Auth::user()->id;
+        $profiles = DB::table('profiles')
+            ->where('user_id', $id)
+            ->get();
+
         return view('Profile.edit', ['profiles' => $profiles]);
     }
 
@@ -102,25 +143,27 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $newProfileName = $_POST['name_profile_edit'];
-        $newProfileSurname = $_POST['surname_profile_edit'];
-
-        if(empty($newProfileSurname)) {
-            $newProfileSurname =  DB::table('profiles')->value('surname_profile');
-        }else if(empty($newProfileName)) {
-            $newProfileName =  DB::table('profiles')->value('name_profile');
-        }
+        $id = \Auth::user()->id;
         $profile_id = DB::table('profiles')->value('user_id');
+        $allValueEditProfile = $request->except('_token');
 
-        $profile_name_update = DB::table('profiles')
-            ->where('user_id', $profile_id)
-            ->update([
-                'name_profile' => $newProfileName,
-                'surname_profile'=> $newProfileSurname
-                ])
-            ->save();
+        foreach ($allValueEditProfile as $key => $value) {
 
-        echo ('wszystko sie udalo, twoje dane zostały podmienione');
+            $value === NULL ? $value = DB::table('profiles')->where('user_id', $id)->value($key): $value;
+
+            $profile_name_update = DB::table('profiles')
+                ->where('user_id', $profile_id)
+                ->update([$key => $value]);
+
+//            echo ('wszystko sie udalo, twoje dane zostały podmienione');
+        // dziala pobranie danych skrocona wersja tego z empty ( empty do wywaleia )
+        }
+
+//        if(empty($newProfileSurname)) {
+//            $newProfileSurname =  DB::table('profiles')->value('surname_profile');
+//        }else if(empty($newProfileName)) {
+//            $newProfileName =  DB::table('profiles')->value('name_profile');
+//        }
     }
 
     /**
@@ -131,10 +174,10 @@ class ProfileController extends Controller
      */
     public function destroy()
     {
-        $currentIdUser = \Auth::user()->id;
+        $id = \Auth::user()->id;
 
         $profiles = DB::table('profiles')
-            ->where('user_id', $currentIdUser)
+            ->where('user_id', $id)
             ->whereNotNull('updated_at')
             ->delete();
 

@@ -18,6 +18,9 @@ class CreateProfilesTable extends Migration
             $table->integer('user_id')->unique();
             $table->string('name_profile');
             $table->string('surname_profile');
+            $table->integer('tel_profile');
+            $table->date('birthday_profile');
+            $table->string('country_profile');
             $table->timestamps();
         });
 

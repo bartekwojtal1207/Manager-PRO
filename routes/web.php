@@ -41,6 +41,11 @@ Route::post('/deleteProfile',[
     'uses'=>'ProfileController@destroy',
     'as'=>'profile.destroy'
 ]);
+Route::get('/testProfile',[
+    'uses'=>'ProfileController@save',
+    'as'=>'profile.test'
+]);
+
 
 Auth::routes();
 

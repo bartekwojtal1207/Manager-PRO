@@ -3,7 +3,9 @@
 @section('title','Profile/edit')
 
 @section('content')
-
+    <div class="row" style="margin-bottom: 15px;">
+        <h3> Edytuj swoje dane :</h3>
+    </div>
 {{--    {{dd($profiles[0]->name_profile)}};--}}
     @foreach ($profiles as $profile)
         {{--{{dd(count($profile))}}--}}
@@ -11,34 +13,57 @@
         <form method="post" action="{{route('profile.update')}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-            <h2 style="color: cadetblue">{{$profile->name_profile}}</h2>
-            <label for="name_profile" style="color: aliceblue">Edytuj swoje imię</label>
-            <br>
-            <input type="text" name="name_profile">
+            <div class="row">
+                <div class="col-md-2" style="display: flex; justify-content: center">
+                    <p style="color: gray; line-height: 34px; font-size: 14px;">Imię</p>
+                </div>
+                <div class="col-md-2" >
+                    <input type="text" class="form-control" name="name_profile" placeholder="{{$profile->name_profile === null ? ' wpisz swoje imię' : $profile->name_profile}}">
+                </div>
+            </div>
 
-            <h2 style="color: cadetblue">{{$profile->surname_profile}}</h2>
-            <label for="surname_profile" style="color: aliceblue">Edytuj swoje nazwisko</label>
-            <br>
-            <input type="text" name="surname_profile">
+            <div class="row">
+                <div class="col-md-2" style="display: flex; justify-content: center">
+                    <p style="color: gray; line-height: 34px; font-size: 14px;">Nazwisko</p>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" name="name_profile" placeholder="{{$profile->surname_profile === null ? ' wpisz swoje nazwisko' : $profile->surname_profile}}">
+                </div>
+            </div>
 
-            <h2 style="color: cadetblue">{{$profile->tel_profile}}</h2>
-            <label for="tel_profile" style="color: aliceblue">{{$profile->tel_profile === null ? 'Wpisz' :'zmień'}} nr telefonu</label>
-            <br>
-            <input type="text" name="tel_profile">
+            <div class="row" >
+                <div class="col-md-2" style="display: flex; justify-content: center">
+                    <p style="color: gray; line-height: 34px; font-size: 14px;">Numer telefonu</p>
+                </div>
+                <div class="col-md-2">
+                    <input type="text"  class="form-control"  name="name_profile" placeholder="{{$profile->tel_profile === null ? ' wpisz swój numer telefonu' : $profile->tel_profile}}">
+                </div>
+            </div>
 
-            <h2 style="color: cadetblue">{{$profile->birthday_profile}}</h2>
-            <label for="birthday_profile" style="color: aliceblue">{{$profile->birthday_profile === null ? 'Wpisz' :'zmień'}} datę urodzenia</label>
-            <br>
-            <input type="text" name="birthday_profile">
+            <div class="row">
+                <div class="col-md-2" style="display: flex; justify-content: center">
+                    <p style="color: gray; line-height: 34px; font-size: 14px;">Data urodzenia</p>
+                </div>
+                <div class="col-md-2">
+                    <input type="text"  class="form-control" name="name_profile" placeholder="{{$profile->birthday_profile === null ? ' wpisz' :' edytuj'}} datę urodzenia">
+                </div>
+            </div>
 
-            <h2 style="color: cadetblue">{{$profile->country_profile}}</h2>
-            <label for="country_profile" style="color: aliceblue">{{$profile->country_profile === null ? 'Wpisz swój kraj': 'zmień swoje pochodzenie'}}</label>
-            <br>
-            <input type="text" name="country_profile">
-            <br/>
-            <br/>
-            <br/>
-            <input type="submit" value="EDYTUJ swoje dane" class="btn btn-danger">
+            <div class="row">
+                <div class="col-md-2" style="display: flex; justify-content: center">
+                    <p style="color: gray; line-height: 34px; font-size: 14px;">Twój kraj</p>
+                </div>
+                <div class="col-md-2">
+                    <input type="text"  class="form-control" name="name_profile" placeholder="{{$profile->country_profile === null ? ' wpisz' :' edytuj'}} datę urodzenia">
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-4" style="display: flex; justify-content: flex-end">
+                    <input type="submit" value="EDYTUJ swoje dane" class="btn btn-danger">
+                </div>
+            </div>
+
         </form>
     @endforeach
 

@@ -18,27 +18,17 @@ use Illuminate\Contracts\Cache\Repository;
 
 class ProfileController extends Controller
 {
-
-    public $testID ;
+    protected $testId;
 
     public function __construct()
     {
         $this->middleware('auth');
 
-
-    }
-    public function setTestID($id)
-    {
-//        $this->testID = $id;
-//        Cache::put($this->testID, $id);
-        echo  $this->testID ;
-    }
-
-    public function getTestID()
-    {
-//        echo 'get';
-//        Cache::get($this->testID);
-//        return $this->testID;
+        $this->middleware(function ($request, $next) {
+            $this->testId = Auth::user()->id;
+           // tu dziala git
+            return $next($request);
+        });
     }
 
     /**
@@ -46,11 +36,13 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-//dd($this);
-        $id = \Auth::user()->id;
-        $this->setTestID($id);
+
+//        dd($this->testId); <- nowy zapis  for current user -> id
+        // do zmiany w kazdej stancji controllera profilu
+         $id = \Auth::user()->id;
+
 
         $profiles = DB::table('profiles')
             ->where('user_id', $id)
@@ -61,20 +53,15 @@ class ProfileController extends Controller
 
     public function save()
     {
-//        $id = \Auth::user()->id;
-//        $this->setTestID($id);
-//        echo "<br/>";
-//        echo $this->testID;
 
     }
-
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
 
@@ -123,9 +110,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-//        $this->getTestID();
-
-
+//        dd($this->testId);
         $id = \Auth::user()->id;
         $profiles = DB::table('profiles')
             ->where('user_id', $id)
@@ -155,15 +140,9 @@ class ProfileController extends Controller
                 ->where('user_id', $profile_id)
                 ->update([$key => $value]);
 
-//            echo ('wszystko sie udalo, twoje dane zostały podmienione');
-        // dziala pobranie danych skrocona wersja tego z empty ( empty do wywaleia )
+            return redirect('profile');
         }
 
-//        if(empty($newProfileSurname)) {
-//            $newProfileSurname =  DB::table('profiles')->value('surname_profile');
-//        }else if(empty($newProfileName)) {
-//            $newProfileName =  DB::table('profiles')->value('name_profile');
-//        }
     }
 
     /**

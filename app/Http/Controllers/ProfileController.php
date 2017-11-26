@@ -26,7 +26,6 @@ class ProfileController extends Controller
 
         $this->middleware(function ($request, $next) {
             $this->testId = Auth::user()->id;
-           // tu dziala git
             return $next($request);
         });
     }
@@ -38,11 +37,7 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-
-//        dd($this->testId); <- nowy zapis  for current user -> id
-        // do zmiany w kazdej stancji controllera profilu
-         $id = \Auth::user()->id;
-
+        $id = $this->testId;
 
         $profiles = DB::table('profiles')
             ->where('user_id', $id)
@@ -75,8 +70,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $id = \Auth::user()->id;
-        $currentProfile = \Auth::user()->profile;// udalo sie !!!!!!!!!!
+        $id = $this->testId;
 
         $profile = new Profile();
 
@@ -86,9 +80,17 @@ class ProfileController extends Controller
         $profile->birthday_profile = $request->input('birthday_profile');
         $profile->tel_profile = $request->input('phone_profile');
         $profile->country_profile = $request->input('country_profile');
-
         $profile->save();
-        dd($profile);
+
+        $file = $request->file('image');
+        if (! empty($file))
+        {
+//            $extensionAvatar = $file->getClientOriginalExtension();
+            $name = $id.'avatar';
+            $file->move('images/images_profile', $name);
+        }
+
+        return redirect('profile');
     }
 
     /**
@@ -110,8 +112,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-//        dd($this->testId);
-        $id = \Auth::user()->id;
+        $id = $this->testId;
         $profiles = DB::table('profiles')
             ->where('user_id', $id)
             ->get();
@@ -128,7 +129,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $id = \Auth::user()->id;
+        $id = $this->testId;
         $profile_id = DB::table('profiles')->value('user_id');
         $allValueEditProfile = $request->except('_token');
 
@@ -153,7 +154,7 @@ class ProfileController extends Controller
      */
     public function destroy()
     {
-        $id = \Auth::user()->id;
+        $id = $this->testId;
 
         $profiles = DB::table('profiles')
             ->where('user_id', $id)

@@ -10,7 +10,7 @@
                 <div id="edit_profile"></div>
                 <h3 style="margin-bottom: 15px;"> Edytuj swoje dane :</h3>
                 @foreach ($profiles as $profile)
-                    <form method="post" action="{{route('profile.update')}}">
+                    <form method="post" action="{{route('profile.update')}}" files="true">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                         <div class="row">
@@ -27,7 +27,7 @@
                                 <p style="color: gray; line-height: 34px; font-size: 14px;">Nazwisko</p>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name_profile" placeholder="{{$profile->surname_profile === null ? ' wpisz swoje nazwisko' : $profile->surname_profile}}">
+                                <input type="text" class="form-control" name="surname_profile" placeholder="{{$profile->surname_profile === null ? ' wpisz swoje nazwisko' : $profile->surname_profile}}">
                             </div>
                         </div>
 
@@ -36,7 +36,7 @@
                                 <p style="color: gray; line-height: 34px; font-size: 14px;">Numer telefonu</p>
                             </div>
                             <div class="col-md-6">
-                                <input type="text"  class="form-control"  name="name_profile" placeholder="{{$profile->tel_profile === null ? ' wpisz swój numer telefonu' : $profile->tel_profile}}">
+                                <input type="text"  class="form-control"  name="tel_profile" placeholder="{{$profile->tel_profile === null ? ' wpisz swój numer telefonu' : $profile->tel_profile}}">
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@
                                 <p style="color: gray; line-height: 34px; font-size: 14px;">Data urodzenia</p>
                             </div>
                             <div class="col-md-6">
-                                <input type="text"  class="form-control" name="name_profile" placeholder="{{$profile->birthday_profile === null ? ' wpisz  datę urodzenia' : $profile->birthday_profile}}">
+                                <input type="text"  class="form-control" name="birthday_profile" placeholder="{{$profile->birthday_profile === null ? ' wpisz  datę urodzenia' : $profile->birthday_profile}}">
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
                                 <p style="color: gray; line-height: 34px; font-size: 14px;"> Twój kraj</p>
                             </div>
                             <div class="col-md-6">
-                                <input type="text"  class="form-control" name="name_profile" placeholder="{{$profile->country_profile === null ? ' uzupełnij swój kraj' : $profile->country_profile }} ">
+                                <input type="text"  class="form-control" name="country_profile" placeholder="{{$profile->country_profile === null ? ' uzupełnij swój kraj' : $profile->country_profile }} ">
                             </div>
                         </div>
 

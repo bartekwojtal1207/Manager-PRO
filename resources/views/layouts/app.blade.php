@@ -14,6 +14,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- bootstrap styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!--slider  -->
+    <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}"/>
 
 </head>
 <body>
@@ -51,7 +54,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -65,6 +68,9 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('profile.index') }}">Profil</a>
                                     </li>
                                 </ul>
                             </li>
@@ -86,7 +92,12 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <!-- slider slick js -->
+    <script src="{{ asset('js/slick.js') }}"></script>
+
+    <script src="{{ asset('js/mainpage.js') }}"></script>
     <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script-js')
 </body>

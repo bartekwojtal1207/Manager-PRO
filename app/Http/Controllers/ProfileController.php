@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Profile;
 use App\Providers\AppServiceProvider;
 use App\User;
+use App\Http\Controllers;
+use Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +17,9 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Contracts\Cache\Repository;
+//use App\Http\Controllers\File;
+use Illuminate\Http\File;
+
 
 class ProfileController extends Controller
 {
@@ -86,11 +91,13 @@ class ProfileController extends Controller
         if (! empty($file))
         {
 //            $extensionAvatar = $file->getClientOriginalExtension();
-            $name = $id.'avatar';
-            $file->move('images/images_profile', $name);
+//            $name = $id.'avatar';
+//            $file->move('images/images_profile', $name);
+//            Storage::disk('local')->put('images/images_profile/'.$id.'avatar');
+            Storage::putFileAs('public/images/images_profile', new File($file), $this->testId.'avatar');
         }
 
-        return redirect('profile');
+//        return redirect('profile');
     }
 
     /**
@@ -160,7 +167,9 @@ class ProfileController extends Controller
             ->where('user_id', $id)
             ->whereNotNull('updated_at')
             ->delete();
-
+        $avatar = ('images/images_profile/'.$id.'avatar');
+//        unlink($avatar);
+//        dd($avatar);
         return redirect('profile');
     }
 }

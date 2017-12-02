@@ -5,6 +5,7 @@
 
 @section('content')
 
+
     @if(isset(\Auth::user()->profile))
         <div class="row">
             <h4 style="margin-bottom: 20px;">Your profil: {{\Auth::user()->profile->name_profile}}</h4>
@@ -12,10 +13,11 @@
         @foreach( $profiles as $profile)
             <div class="row" style="margin-bottom: 30px;">
                 <div class="image" style="display: block; width: 19%;" >
-                    @if(file_exists(public_path().'/images/images_profile/'.\Auth::user()->profile->user_id.'avatar'))
-                        <img src="{{asset('images/images_profile/'.\Auth::user()->profile->user_id.'avatar')}}"  class="img-responsive">
+                    {{dd(public_path('storage'))}}
+                    @if( Storage::disk('local')->exists('public/images/images_profile/1avatar'))
+                        <img src="{{ Storage::url('images/images_profile/'.$profile->user_id.'avatar') }}"  class="img-responsive">
                     @else
-                        <img src="{{asset('images/avatar.png')}}"  class="img-responsive">
+                        <img src="{{ Storage::url('images/avatar.png') }}"  class="img-responsive">
                     @endif
                 </div>
                 <table class="table table-hover table-responsive" style="width: 35%;">
@@ -90,7 +92,7 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="country_profile">Dodaj swój avatar</label><br>
-                    {{ Form::file('image',array('class' => 'f')) }}
+                    {{ Form::file('image',array('class' => 'form-control')) }}
                 </div>
                 <div class="form-group text-center">
                     <input type="submit" class="btn btn-primary" value="Wyślij">

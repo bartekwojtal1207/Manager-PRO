@@ -4,13 +4,12 @@
 
 @section('content')
     <div class="row" style="margin-bottom: 15px;">
-
         <div class="row">
             <div class="col-md-12">
                 <div id="edit_profile"></div>
                 <h3 style="margin-bottom: 15px;"> Edytuj swoje dane :</h3>
                 @foreach ($profiles as $profile)
-                    <form method="post" action="{{route('profile.update')}}" files="true">
+                        {{Form::open(array('route' => 'profile.update', 'files'=> true)) }}
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                         <div class="row">
@@ -36,7 +35,7 @@
                                 <p style="color: gray; line-height: 34px; font-size: 14px;">Numer telefonu</p>
                             </div>
                             <div class="col-md-6">
-                                <input type="text"  class="form-control"  name="tel_profile" placeholder="{{$profile->tel_profile === null ? ' wpisz swój numer telefonu' : $profile->tel_profile}}">
+                                <input type="tel"  class="form-control" maxlength="11" name="tel_profile" placeholder="{{$profile->tel_profile === null ? ' wpisz swój numer telefonu' : $profile->tel_profile}}">
                             </div>
                         </div>
 
@@ -45,7 +44,7 @@
                                 <p style="color: gray; line-height: 34px; font-size: 14px;">Data urodzenia</p>
                             </div>
                             <div class="col-md-6">
-                                <input type="text"  class="form-control" name="birthday_profile" placeholder="{{$profile->birthday_profile === null ? ' wpisz  datę urodzenia' : $profile->birthday_profile}}">
+                                <input type="date"  class="form-control" name="birthday_profile" placeholder="{{$profile->birthday_profile === null ? ' wpisz  datę urodzenia' : $profile->birthday_profile}}">
                             </div>
                         </div>
 
@@ -58,23 +57,32 @@
                             </div>
                         </div>
 
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-12" style="display: flex; justify-content: flex-end">
-                                <input type="submit" value="EDYTUJ swoje dane" class="btn btn-danger">
-                            </div>
+                    <div class="col-md-12">
+                        <div  style="border: 1px solid grey; padding: 15px; margin-bottom: 20px">
+                                <div class="row">
+                                    <div class="col-md-6" style="display: flex; justify-content: center">
+                                        @if( Storage::disk('local')->exists('public/images/images_profile/'.$profile->user_id.'avatar') )
+                                            <p style="color: gray; line-height: 34px; font-size: 14px;"> edytuj swój avatar: </p>
+                                        @else
+                                            <p style="color: gray; line-height: 34px; font-size: 14px;"> dodaj swój avatar: </p>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6">
+                                            {{ Form::file('edit_avatar',array('class' => 'form-control' )) }}
+                                    </div>
+                                </div>
+
                         </div>
-                    </form>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12" style="display: flex; justify-content: flex-end">
+                            <input type="submit" value="EDYTUJ swoje dane" class="btn btn-danger">
+                        </div>
+                    </div>
+                    {{Form::close() }}
                 @endforeach
             </div>
         </div>
-
-        {{--<div class="row">--}}
-            <div class="col-md-12">
-                <div id="edit_profile_acount">
-                    tutaj uzupelnic profil danymi{{\Auth::user()->email }}
-                </div>
-            </div>
-        {{--</div>--}}
-
     </div>
 @endsection

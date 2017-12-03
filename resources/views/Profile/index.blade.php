@@ -13,7 +13,6 @@
         @foreach( $profiles as $profile)
             <div class="row" style="margin-bottom: 30px;">
                 <div class="image" style="display: block; width: 19%;" >
-                    {{dd(public_path('storage'))}}
                     @if( Storage::disk('local')->exists('public/images/images_profile/1avatar'))
                         <img src="{{ Storage::url('images/images_profile/'.$profile->user_id.'avatar') }}"  class="img-responsive">
                     @else

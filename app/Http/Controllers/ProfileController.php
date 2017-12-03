@@ -90,14 +90,10 @@ class ProfileController extends Controller
         $file = $request->file('image');
         if (! empty($file))
         {
-//            $extensionAvatar = $file->getClientOriginalExtension();
-//            $name = $id.'avatar';
-//            $file->move('images/images_profile', $name);
-//            Storage::disk('local')->put('images/images_profile/'.$id.'avatar');
             Storage::putFileAs('public/images/images_profile', new File($file), $this->testId.'avatar');
         }
 
-//        return redirect('profile');
+        return redirect('profile');
     }
 
     /**
@@ -138,18 +134,24 @@ class ProfileController extends Controller
     {
         $id = $this->testId;
         $profile_id = DB::table('profiles')->value('user_id');
-        $allValueEditProfile = $request->except('_token');
+        $allValueEditProfile = $request->except('_token','edit_avatar' );
 
         foreach ($allValueEditProfile as $key => $value) {
-
             $value === NULL ? $value = DB::table('profiles')->where('user_id', $id)->value($key): $value;
 
             $profile_name_update = DB::table('profiles')
                 ->where('user_id', $profile_id)
                 ->update([$key => $value]);
-
-            return redirect('profile');
         }
+
+        $file = $request->file('edit_avatar');
+
+        if (! empty($file))
+        {
+            Storage::putFileAs('public/images/images_profile', new File($file), $this->testId.'avatar');
+        }
+
+        return redirect('profile');
 
     }
 
@@ -167,9 +169,14 @@ class ProfileController extends Controller
             ->where('user_id', $id)
             ->whereNotNull('updated_at')
             ->delete();
-        $avatar = ('images/images_profile/'.$id.'avatar');
-//        unlink($avatar);
-//        dd($avatar);
+
+        $exists = Storage::disk('local')->exists('public/images/images_profile/'.$this->testId.'avatar');
+
+        if ($exists)
+        {
+            Storage::delete('public/images/images_profile/'.$this->testId.'avatar');
+        }
+
         return redirect('profile');
     }
 }

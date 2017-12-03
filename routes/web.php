@@ -45,6 +45,11 @@ Route::get('/testProfile',[
     'uses'=>'ProfileController@save',
     'as'=>'profile.test'
 ]);
+//team route
+Route::get('/team',[
+    'uses'=> 'TeamController@index',
+    'as'=> 'team.index'
+]);
 
 
 Auth::routes();

@@ -17,9 +17,20 @@
 <div class="row">
     <div class="col-md-12">
         <div class="slider" style="width: 250px; height: 250px; margin: auto">
-            <div class="slider-item" style="border: 1px solid  dodgerblue; height: 200px;">1</div>
-            <div class="slider-item" style="border: 1px solid  dodgerblue; height: 200px;">2</div>
-            <div class="slider-item" style="border: 1px solid  dodgerblue; height: 200px;">3</div>
+            <div class="slider-item" style=" height: 190px;">
+                <a href="#" style="width: 100%; height: 100%; display: block">
+                    <p style="display: block; margin: auto; height: 100%; line-height: 165px" class="text-center">Przejdź do swojego profilu</p>
+                </a>
+            </div>
+            <div class="slider-item" style=" height: 190px;">
+                <a href="{{route('profile.index')}}" >
+                    <img src="{{ asset('img/sliderPhoto/homeOffice2.jpg') }}" alt="edytuj swój profil" class="img-responsive">
+                    <p class="text-center" style="margin-top: 5px; color: indianred; font-weight: bolder">Przejdź do swojego profilu</p>
+                </a>
+            </div>
+            <div class="slider-item" style=" height: 165px;">
+                <a href="{{route('team.index')}}" style="width: 100%; height: 100%; display: block"> team</a>
+            </div>
         </div>
     </div>
 </div>

@@ -45,10 +45,14 @@ Route::get('/testProfile',[
     'uses'=>'ProfileController@save',
     'as'=>'profile.test'
 ]);
-//team route
+//Team route
 Route::get('/team',[
     'uses'=> 'TeamController@index',
     'as'=> 'team.index'
+]);
+Route::get('/add_team',[
+    'uses'=> 'TeamController@store',
+    'as'=> 'team.store'
 ]);
 
 

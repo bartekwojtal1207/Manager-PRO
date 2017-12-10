@@ -105,4 +105,5 @@
 @section('script-js')
     {{-- scritpt only for edit profile page--}}
     <script src="{{ asset('js/test.js') }}"></script>
+    <script src="{{ asset('js/mainpage.js') }}"></script>
 @endsection

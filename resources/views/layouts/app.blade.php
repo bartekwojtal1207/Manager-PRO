@@ -98,7 +98,7 @@
     <!-- slider slick js -->
     <script src="{{ asset('js/slick.js') }}"></script>
 
-    <script src="{{ asset('js/mainpage.js') }}"></script>
+
     <!-- Scripts -->
 
     <script src="{{ asset('js/app.js') }}"></script>

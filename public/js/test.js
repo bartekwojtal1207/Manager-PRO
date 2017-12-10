@@ -1,6 +1,6 @@
 $( document ).ready(function() {
-console.log('test.js folder public');
-
+console.log('blocked delete data profile //.js folder public');
+// RENAME this file !!!!
    var deleteBtn = $('#deleteProfileBtn');
 
     deleteBtn.one('click', function(e) {

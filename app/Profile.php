@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
 
-
+    public function team()
+    {
+        return $this->hasMany(Team::class);
+    }
 
 }

@@ -151,7 +151,7 @@ class ProfileController extends Controller
             Storage::putFileAs('public/images/images_profile', new File($file), $this->testId.'avatar');
         }
 
-        return redirect('profile');
+//        return redirect('profile');
 
     }
 

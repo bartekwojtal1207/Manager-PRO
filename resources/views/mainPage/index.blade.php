@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="slider-item" style=" height: 165px;">
-                <a href="{{route('team.index')}}" style="width: 100%; height: 100%; display: block"> team</a>
+                <a href="{{route('Team')}}" style="width: 100%; height: 100%; display: block"> team</a>
             </div>
         </div>
     </div>

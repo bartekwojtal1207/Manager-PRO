@@ -50,7 +50,7 @@ Route::get('/team',[
     'uses'=> 'TeamController@index',
     'as'=> 'team.index'
 ]);
-Route::get('/add_team',[
+Route::post('/add_team',[
     'uses'=> 'TeamController@store',
     'as'=> 'team.store'
 ]);

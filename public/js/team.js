@@ -12,8 +12,6 @@ function TeamViewModel() {// this is vievmodel
     self.founded_team = ko.observable(currentDate);
     self.active_team_checkbox = ko.observable(false);
 
-
-
     self.people =  [
         { firstName: 'Bert', lastName: 'Bertington', test: 'test - data', testKraj: 'test - kraj' },
         { firstName: 'Charles', lastName: 'Charlesforth', test: null, testKraj: null },

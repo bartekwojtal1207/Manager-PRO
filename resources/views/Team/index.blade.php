@@ -10,6 +10,7 @@
         <div class="row">
             <div class="col-12">
                 <h3> Dodaj swój zespół </h3>
+                {{$rules_team}}
             </div>
 
             <div class="col-md-4">
@@ -39,6 +40,18 @@
                             {{Form::checkbox('active_team', '', false, array('style'=>'margin-left: 0px;','id'=>'active_team', 'data-bind' => 'checked: active_team_checkbox, attr : {disabled : isDisabled}')) }}
                             <span style="margin-left: 20px;" data-bind="if: active_team_checkbox"> TEN zespół będzie ustawiony jako aktywny <span style="color:red">*</span></span>
                         </div>
+                        <div class="checkbox form-group">
+                            {{-- zaznaczenie checkboxa jest przechowywane w sesji ( po odświeżeniu strony checkbox będzie dalej zaznaczony po 120 minutach ) --}}
+                            @if( ! $rules_team )
+                            {{Form::label('rules_team', 'Akceptuję regulamin odnośnie drużyn w Manager-PRO-system', array('style'=>'margin-left: -22px;')) }}
+                            @endif
+                                <br>
+                            {{Form::checkbox('rules_team', '', $rules_team  ? true : false , array('style'=>'margin-left: 0px;','id'=>'rules_team')) }}
+                            <br/>
+                            @if(  $rules_team )
+                            <span style="margin-left: 20px;" > Dziękujemy i zapraszamy do wspólnej zabawy <span style="color:red">*</span></span>
+                            @endif
+                        </div>
                     {{--zrobic input na dodanie herbu--}}
                         <button data-bind="click : disable">Add team !</button>
                     {{Form::close()}}
@@ -65,6 +78,7 @@
                 Latitude: <span data-bind="text: latitude"> </span>,
                 Longitude: <span data-bind="text: longitude"> </span>
             </p>
+
 
         </div>
 

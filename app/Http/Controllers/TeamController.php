@@ -26,9 +26,11 @@ class TeamController extends Controller
         });
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('Team.index');
+
+        $data = $request->session()->get('rules_team');
+        return view('Team.index',['rules_team' => $data]);
     }
 
     public function store(Request $request)
@@ -41,9 +43,17 @@ class TeamController extends Controller
         $team->name_team = $request->input('name_team');
         $team->founded_team = $request->input('founded_team');
         $team->country_team = $request->input('country_team');
-        $team->active = $request->input('active_team');
-        $team->save();
 
+        if( $request->has('rules_team') )
+        {
+            $request->session()->put('rules_team', true);
+        }
+        else
+        {
+            $request->session()->put('rules_team', false);
+        }
+
+//        $team->save();
         return redirect('team');
     }
 }

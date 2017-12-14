@@ -103,6 +103,25 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'name_team' => [
+            'required' => 'Wpisz nazwę klubu',
+            'string' => 'Nazwa musi posiadać przynajmniej 3 litery',
+            'max' => 'Nazwa za długa'
+        ],
+        'founded_team' =>[
+            'required' => 'Uzupełnij datę utworzenia klubu',
+            'date' => 'Wpisz datę w formacie rrrr-mm-dd'
+        ],
+        'country_team' => [
+            'required' => 'Wpisz związek piłkarski twojego klubu',
+            'string' => 'Nazwa musi posiadać przynajmniej 3 litery',
+        ],
+        'active_team_checkbox' =>[
+            'accepted' => 'Przynajmiej jedna z twoich drużyn musi być aktywna',
+        ],
+        'rules_team_checkbox'=>[
+            'accepted' => 'Zaakceptowanie regulaminu jest wymagane aby zespół został dodany w naszym systemie',
+        ]
     ],
 
     /*

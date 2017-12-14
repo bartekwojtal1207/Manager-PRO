@@ -59,19 +59,23 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ route('profile.index') }}">Profil</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('team.index') }}">Twoje kluby</a>
+                                    </li>
+                                    <hr>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('profile.index') }}">Profil</a>
-                                    </li>
+
                                 </ul>
                             </li>
                         @endguest

@@ -29,9 +29,10 @@ class TeamController extends Controller
 
     public function index(Request $request)
     {
-
+        /*
+         * @ToDo zmienic nazwe $data i $data2
+        */
         $data = $request->session()->get('rules_team_checkbox');
-//        $data = true;
         $data2 = $request->session()->get('active_team_checkbox');
 
         return view('Team.index',['rules_team_checkbox' => $data, 'active_team_checkbox' => $data2]);
@@ -41,23 +42,17 @@ class TeamController extends Controller
     {
         $id = $this->testId;
 
-        $team = new Team();
+        $validator = $request->validate([
+            'name_team' => 'bail|required|string|max:75',
+            'founded_team' => 'required|date',
+            'country_team' => 'required|string',
+            'rules_team_checkbox' => 'accepted',
+            'active_team_checkbox' => 'accepted',
+        ]);
 
-        $team->user_id = $id;
-        $team->name_team = $request->input('name_team');
-        $team->founded_team = $request->input('founded_team');
-        $team->country_team = $request->input('country_team');
-
-
-//        $validatedData = $request->validate([
-//            'name_team' => 'bail|required|max:75 ',
-//            'founded_team' => 'required|date',
-//            'country_team' => 'required|string',
-//            'rules_team_checkbox' => 'accepted',
-//            'active_team_checkbox' => 'accepted'
-//        ]);
-
-        // validator dziala dobrze 
+        /*
+         * set checkbox after refresh page
+         */
         if( $request->has('rules_team_checkbox'))
         {
             $request->session()->put('rules_team_checkbox', true);
@@ -66,22 +61,19 @@ class TeamController extends Controller
         {
             $request->session()->put('rules_team_checkbox', false);
         }
-        // dzialaaaaaa :)
 
-//        dd('przeszlo kurwo jebana ty :)');
-//        if( ($request->name_team) !== null && ($request->founded_team) !== null )
-//        {
-//           dd('uzupelione imie i nazwisk');
-//        }
-//        else
-//        {
-//
-//            dd('nie jest');
-//        }
-
-
-
+        $team = new Team();
+        /*
+         * przeniesc to do modelu
+         *
+         */
+        $team->user_id = $id;
+        $team->name_team = $request->input('name_team');
+        $team->founded_team = $request->input('founded_team');
+        $team->country_team = $request->input('country_team');
 //        $team->save();
+
+
         return redirect('team');
     }
 }

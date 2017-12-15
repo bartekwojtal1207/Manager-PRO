@@ -44,11 +44,10 @@ class ProfileController extends Controller
     {
         $id = $this->testId;
 
-        $profiles = DB::table('profiles')
-            ->where('user_id', $id)
-            ->get();
+        $profile = new Profile();
+        $profile->getProfile();
 
-        return view('Profile.index', ['profiles' => $profiles]);
+        return view('Profile.index', ['profile' => $profile->getProfile()]);
     }
 
     public function save()
@@ -78,6 +77,7 @@ class ProfileController extends Controller
         $id = $this->testId;
 
         $profile = new Profile();
+        $profile->getProfile();
 
         $profile->name_profile = $request->input('name_profile');
         $profile->surname_profile = $request->input('surname_profile');

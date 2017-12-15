@@ -10,7 +10,8 @@
         <div class="row">
             <h4 style="margin-bottom: 20px;">Your profil: {{\Auth::user()->profile->name_profile}}</h4>
         </div>
-        @foreach( $profiles as $profile)
+
+        {{--@foreach( $profiles as $profile)--}}
             <div class="row" style="margin-bottom: 30px;">
                 <div class="image" style="display: block; width: 19%;" >
                     @if( Storage::disk('local')->exists('public/images/images_profile/1avatar'))
@@ -45,7 +46,7 @@
                 </tr>
                 </table>
             </div>
-        @endforeach
+        {{--@endforeach--}}
 
         <div class="row" >
             <form method="post" action="{{route('profile.edit')}}">

@@ -38,17 +38,18 @@
                         <!-- /ko -->
 
                         <div class="checkbox form-group">
-                            {{Form::label('rules_team_checkbox', 'Akceptuję regulamin odnośnie drużyn w Manager-PRO-system', array('style'=>'margin-left: -22px;', 'data-bind' => 'ifnot: rules_team_checkbox')) }}
+                            {{Form::label('rules_team_checkbox', 'Akceptuję regulamin odnośnie drużyn w Manager-PRO-system', array('style'=>'margin-left: -22px;color: green;', 'data-bind' => 'ifnot: rules_team_checkbox')) }}
                             <br>
-                            {{Form::checkbox('rules_team_checkbox', true , $rules_team_checkbox ? true : false , array('style'=>'margin-left: 0px;','id'=>'rules_team_checkbox','data-bind' => 'checked: rules_team_checkbox')) }}
+                            {{Form::checkbox('rules_team_checkbox', true , $rules_team_checkbox  , array('style'=>'margin-left: 0px;','id'=>'rules_team_checkbox','data-bind' => 'checked: rules_team_checkbox')) }}
                             <br/>
                             <span style="margin-left: 20px;"  data-bind="if: rules_team_checkbox" > Dziękujemy i zapraszamy do wspólnej zabawy <span style="color:red">*</span></span>
                             <span style="color: red;" data-bind="ifnot: rules_team_checkbox" > {{ ($errors->first('rules_team_checkbox')) }}</span>
                         </div>
 
                         <div class="checkbox form-group">
-                            {{Form::label('active_team_checkbox', 'Ustaw jako aktywny', array('style'=>'margin-left: -22px;', ' data-bind'=>'ifnot: active_team_checkbox, ')) }}
+                            {{Form::label('active_team_checkbox', 'Ustaw jako aktywny', array('style'=>'margin-left: -22px; color: green; ', ' data-bind'=>'ifnot: active_team_checkbox, ')) }}
                             <br>
+
                             {{Form::checkbox('active_team_checkbox', true, $active_team_checkbox ? true : false , array('style'=>'margin-left: 0px;','id'=>'active_team_checkbox', 'data-bind' => 'checked: active_team_checkbox')) }}
                             <br/>
                             <span style="margin-left: 20px;" data-bind="if: active_team_checkbox"> TEN zespół będzie ustawiony jako aktywny <span style="color:red">*</span></span>
@@ -66,7 +67,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <table class="table table-active table-responsive table-striped table-bordered table-hover table-info" style="width: 92.5%" >
+                <table class="table table-active table-responsive table-striped table-bordered table-hover table-info" style="width: 92.5%; font-size: 12px;" >
                     <tr><th>Nazwa zespołu</th><th>zwycięstwo</th><th>remis</th><th>porażka</th> <th>gol +</th> <th>gol -</th><th>punkty</th></tr>
                     <tbody data-bind="foreach: people">
                         <tr>

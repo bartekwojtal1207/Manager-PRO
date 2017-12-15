@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Team;
+use App\Profile;
 use App\Http\Kernel;
 use Illuminate\Http\Request;
-use App\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\File;
@@ -14,7 +14,10 @@ use Storage;
 
 class TeamController extends Controller
 {
-
+    /*
+     *
+     * @ToDo zmienic nazwe zmiennej
+     */
     protected $testId;
 
     public function __construct()
@@ -29,11 +32,16 @@ class TeamController extends Controller
 
     public function index(Request $request)
     {
+        $teamTest =  new Team();
+        $teamTest->seyHello('przekazanie metody sey hello z parametrem');
+        echo "<br/>";
+        $teamTest->getTeamId(1);
         /*
          * @ToDo zmienic nazwe $data i $data2
         */
         $data = $request->session()->get('rules_team_checkbox');
         $data2 = $request->session()->get('active_team_checkbox');
+//        dd($data);
 
         return view('Team.index',['rules_team_checkbox' => $data, 'active_team_checkbox' => $data2]);
     }

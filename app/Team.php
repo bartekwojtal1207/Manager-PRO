@@ -1,30 +1,48 @@
 <?php
 
 namespace App;
-
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Support\Facades\DB;
 
 class Team extends Model
 {
 
-    protected $idTeam;
+    protected $idTeam;// pobrac wartosc id z tabeli team gdzie user_id jest rowny profile id
+    protected  $nameTeam;
 
     private function setTeamId($idTeam)
     {
-        echo $idTeam.'cos'.'tam';
+
     }
 
-    public function getTeamId($idTeam)
+    public function getTeamId($userId)
     {
-        return $this->setTeamId($idTeam);
+
+        $this->idTeam = DB::table('teams')
+            ->where('profile_id','=',$userId)
+            ->value('id');
+
+        return $this->idTeam ;
+
     }
 
-
-    public function seyHello($nameboy)
+    public function getTeamName($idUser)
     {
-        echo 'witam was ciuleeeee ! :-) '.$nameboy;
+
+        $this->nameTeam = DB::table('teams')
+            ->where('profile_id','=',$idUser)
+            ->pluck('name_team'); // pobieranie kilku wartosci np jezeli jeden user ma kilka postows
+
+        foreach ($this->nameTeam as $name_team) {
+            echo $name_team;
+        }
+//        return $this->nameTeam ;
+
     }
+
 
     private function setActive($idTeam)
     {

@@ -33,9 +33,13 @@ class TeamController extends Controller
     public function index(Request $request)
     {
         $teamTest =  new Team();
-        $teamTest->seyHello('przekazanie metody sey hello z parametrem');
-        echo "<br/>";
-        $teamTest->getTeamId(1);
+
+        $userId = $this->testId;
+
+        $teamId = $teamTest->getTeamId($userId);
+        $teamName = $teamTest->getTeamName($userId);
+//        dd($teamName);
+        echo 'teamteamteam'.$teamName;
         /*
          * @ToDo zmienic nazwe $data i $data2
         */

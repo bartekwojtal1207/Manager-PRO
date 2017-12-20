@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Request;
 class Profile extends Model
 {
     protected $table = 'profiles';
+
     protected $userId;
+
     protected $profile;
 
     public function getProfile()
@@ -18,14 +20,16 @@ class Profile extends Model
         $this->profile = DB::table('profiles')
             ->where('user_id', $this->getUserId())
             ->first();
+
         return $this->profile;
     }
 
-    public function profileName()
+    public function getProfileName()
     {
         $profile = $this->getProfile();
         return $profile->name_profile;
     }
+
 
     /*
      *
@@ -50,7 +54,6 @@ class Profile extends Model
 
     public function team()
     {
-
         return $this->hasMany(Team::class);
     }
 

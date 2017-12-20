@@ -23,14 +23,14 @@ use Illuminate\Http\File;
 
 class ProfileController extends Controller
 {
-    protected $testId;
+    protected $userId;
 
     public function __construct()
     {
         $this->middleware('auth');
 
         $this->middleware(function ($request, $next) {
-            $this->testId = Auth::user()->id;
+            $this->userId = Auth::user()->id;
             return $next($request);
         });
     }
@@ -42,10 +42,11 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $this->testId;
+        $id = $this->userId;
 
         $profile = new Profile();
         $profile->getProfile();
+
 
         return view('Profile.index', ['profile' => $profile->getProfile()]);
     }
@@ -74,7 +75,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $this->testId;
+        $id = $this->userId;
 
         $profile = new Profile();
         $profile->getProfile();
@@ -115,7 +116,8 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        $id = $this->testId;
+        $id = $this->userId;
+
         $profiles = DB::table('profiles')
             ->where('user_id', $id)
             ->get();
@@ -132,7 +134,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $id = $this->testId;
+        $id = $this->userId;
         $profile_id = DB::table('profiles')->value('user_id');
         $allValueEditProfile = $request->except('_token','edit_avatar' );
 
@@ -163,7 +165,7 @@ class ProfileController extends Controller
      */
     public function destroy()
     {
-        $id = $this->testId;
+        $id = $this->userId;
 
         $profiles = DB::table('profiles')
             ->where('user_id', $id)

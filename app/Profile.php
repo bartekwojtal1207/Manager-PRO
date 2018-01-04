@@ -24,9 +24,17 @@ class Profile extends Model
         return $this->profile;
     }
 
+    public function getProfileId()
+    {
+        $profile = $this->getProfile();
+
+        return $profile->id;
+    }
+
     public function getProfileName()
     {
         $profile = $this->getProfile();
+
         return $profile->name_profile;
     }
 

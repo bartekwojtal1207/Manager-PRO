@@ -3,21 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
-use App\Providers\AppServiceProvider;
-use App\User;
-use App\Http\Controllers;
 use Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
-use phpDocumentor\Reflection\Types\This;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Cache\Factory;
-use Illuminate\Contracts\Cache\Repository;
-//use App\Http\Controllers\File;
 use Illuminate\Http\File;
 
 
@@ -42,11 +30,8 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $this->userId;
-
         $profile = new Profile();
         $profile->getProfile();
-
 
         return view('Profile.index', ['profile' => $profile->getProfile()]);
     }
@@ -116,13 +101,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        $id = $this->userId;
+        $profile = new Profile();
+        $profile = $profile->getProfile();
 
-        $profiles = DB::table('profiles')
-            ->where('user_id', $id)
-            ->get();
-
-        return view('Profile.edit', ['profiles' => $profiles]);
+        return view('Profile.edit', ['profile' => $profile]);
     }
 
     /**
@@ -134,16 +116,16 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $id = $this->userId;
-        $profile_id = DB::table('profiles')->value('user_id');
+        $profile = new Profile();
+        $profileId = $profile->getProfileId();
+
         $allValueEditProfile = $request->except('_token','edit_avatar' );
 
         foreach ($allValueEditProfile as $key => $value) {
-            $value === NULL ? $value = DB::table('profiles')->where('user_id', $id)->value($key): $value;
-
-            $profile_name_update = DB::table('profiles')
-                ->where('user_id', $profile_id)
-                ->update([$key => $value]);
+            $value === NULL ? $value = $profile->value($key): $value;
+        /// ustawienie value do update -> gdy jest 0 to pobieramy wartosc z bazy -> gdy ==! 0 value == wartosc z request (input)
+            $profile->where('user_id', $profileId)
+                    ->update([$key => $value]);
         }
 
         $file = $request->file('edit_avatar');
@@ -153,8 +135,7 @@ class ProfileController extends Controller
             Storage::putFileAs('public/images/images_profile', new File($file), $this->testId.'avatar');
         }
 
-//        return redirect('profile');
-
+        return redirect('profile');
     }
 
     /**
@@ -165,18 +146,17 @@ class ProfileController extends Controller
      */
     public function destroy()
     {
-        $id = $this->userId;
+        $userId = $this->userId;
 
-        $profiles = DB::table('profiles')
-            ->where('user_id', $id)
-            ->whereNotNull('updated_at')
-            ->delete();
+        $profile = new Profile();
+        $profile->whereNotNull('updated_at')
+                ->delete();
 
-        $exists = Storage::disk('local')->exists('public/images/images_profile/'.$this->testId.'avatar');
+        $exists = Storage::disk('local')->exists('public/images/images_profile/'.$userId.'avatar');
 
         if ($exists)
         {
-            Storage::delete('public/images/images_profile/'.$this->testId.'avatar');
+            Storage::delete('public/images/images_profile/'.$userId.'avatar');
         }
 
         return redirect('profile');

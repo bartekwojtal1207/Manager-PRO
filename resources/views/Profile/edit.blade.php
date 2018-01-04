@@ -8,8 +8,8 @@
             <div class="col-md-12">
                 <div id="edit_profile"></div>
                 <h3 style="margin-bottom: 15px;"> Edytuj swoje dane :</h3>
-                @foreach ($profiles as $profile)
-                        {{Form::open(array('route' => 'profile.update', 'files'=> true)) }}
+                {{--@foreach ($profiles as $profile)--}}
+                    {{Form::open(array('route' => 'profile.update', 'files'=> true)) }}
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                         <div class="row">
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     {{Form::close() }}
-                @endforeach
+                {{--@endforeach--}}
             </div>
         </div>
     </div>

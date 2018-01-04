@@ -20,7 +20,6 @@ class Team extends Model
 
     public function getTeamId($userId)
     {
-
         $this->idTeam = DB::table('teams')
             ->where('profile_id','=',$userId)
             ->value('id');
@@ -35,18 +34,34 @@ class Team extends Model
         $this->nameTeam = DB::table('teams')
             ->where('profile_id','=',$idUser)
             ->pluck('name_team'); // pobieranie kilku wartosci np jezeli jeden user ma kilka postows
+        $data = [];
 
         foreach ($this->nameTeam as $name_team) {
             echo $name_team;
+            array_push($data, $name_team);
         }
+//        dd($this->nameTeam);
+//        {{--wyswietla wszystkie nazwy teamow dla wybranego uzytkowniak--}}
+
+//        dd($data);
+        return $data; // zwraca tablice
 //        return $this->nameTeam ;
 
     }
 
 
-    private function setActive($idTeam)
+    public function setActive()
     {
-        echo 'ten zespol jest aktynwy';
+        $users = DB::table('teams')
+            ->join('profiles', 'teams.id', '=', 'profiles.user_id')
+            ->pluck('name_profile');
+//            ->get();
+//         dd($users);
+        foreach ($users as $user) {
+            echo $user;
+        }
+
+    // dziala metoda laczenia
     }
 
 

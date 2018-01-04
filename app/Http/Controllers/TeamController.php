@@ -38,16 +38,14 @@ class TeamController extends Controller
 
         $teamId = $teamTest->getTeamId($userId);
         $teamName = $teamTest->getTeamName($userId);
-//        dd($teamName);
-        echo 'teamteamteam'.$teamName;
-        /*
-         * @ToDo zmienic nazwe $data i $data2
-        */
-        $data = $request->session()->get('rules_team_checkbox');
-        $data2 = $request->session()->get('active_team_checkbox');
-//        dd($data);
 
-        return view('Team.index',['rules_team_checkbox' => $data, 'active_team_checkbox' => $data2]);
+
+        $rules_team_checkbox = $request->session()->get('rules_team_checkbox');
+        $active_team_checkbox = $request->session()->get('active_team_checkbox');
+
+        return view('Team.index',['rules_team_checkbox' => $rules_team_checkbox,
+                                        'active_team_checkbox' => $active_team_checkbox,
+                                        'team_name'=>$teamName]);
     }
 
     public function store(Request $request)
@@ -79,11 +77,16 @@ class TeamController extends Controller
          * przeniesc to do modelu
          *
          */
-        $team->user_id = $id;
+        $team->profile_id = $id;
         $team->name_team = $request->input('name_team');
         $team->founded_team = $request->input('founded_team');
         $team->country_team = $request->input('country_team');
-//        $team->save();
+
+
+
+        $team->active = $request->input('active_team_checkbox');
+
+        $team->save();
 
 
         return redirect('team');

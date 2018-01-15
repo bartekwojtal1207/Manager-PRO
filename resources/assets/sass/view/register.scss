@@ -1,0 +1,27 @@
+body{
+  background-image: url("/storage/register/bg-register.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.col-md-12 {
+  float: none !important;
+}
+
+.logo-register {
+  img {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.btn-register-confirm {
+  width: 100%;
+}
+#done-recovery {
+  float: right;
+}
+#no-send-subscribe{
+  float: right;
+}

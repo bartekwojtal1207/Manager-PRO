@@ -17,7 +17,7 @@
     <!--slider  -->
     <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}"/>
-
+    @yield('style-css')
 </head>
 <body>
     <div id="app">
@@ -49,8 +49,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}" style="padding: 0px;">Login</a></li>
+                            <li><a href="{{ route('register') }}" style="padding: 0px;">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -91,9 +91,9 @@
         @yield('content')
     </div>
 
-    <div class="footer" style="  position: fixed; bottom: 0 " >
-        <h3>footer</h3>
-    </div>
+    {{--<div class="footer" style="  position: fixed; bottom: 0 " >--}}
+        {{--<h3>footer</h3>--}}
+    {{--</div>--}}
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

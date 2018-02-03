@@ -101,6 +101,9 @@
             </div>
         </div>
     @endif
+    <a href="#" onClick="handleOutboundLinkClicks()">Play</a>
+
+
 @endsection
 
 @section('script-js')

@@ -184,6 +184,40 @@
                                     {{Form::email('email-subscribe', '', array('class' => 'form-control','placeholder'=>'Enter your Mail'))}}
                                 </div>
                             </div>
+                        {{--<div id="test">--}}
+                            {{--<select name="test" id="test2" class="form-control" style="border-radius: 15px;">--}}
+                                {{--<ul>--}}
+                                    {{--<li>--}}
+                                        {{--<option style="color: red; border-radius: 15px;" value="test01">1qaaaaaa</option>--}}
+                                    {{--</li>--}}
+                                    {{--<li style="border-radius: 15px;">--}}
+                                        {{--<option style="color: red; border-radius: 15px;" value="test01">1qaaaaaa</option>--}}
+                                    {{--</li>--}}
+                                    {{--<li>--}}
+                                        {{--<option style="color: red; border-radius: 15px;" value="test01">1qaaaaaa</option>--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+
+                                {{--<option value="test02" style="border-radius: 15px;">2aaaaaaaa</option>--}}
+                                {{--<option value="test03" style="border-radius: 15px;">3aaaaaaaaa</option>--}}
+                                {{--<option data-content="<span class='label label-success' style = 'background-color: green;'>Relish</span>">as</option>--}}
+                            {{--</select>--}}
+                        <div id="test">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Dropdown
+
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     {{Form::button('Subscribe', array('class'=>'btn','id'=>'send-subscribe'))}}
@@ -198,4 +232,5 @@
         </div><!-- end row-->
     </div>
 </div>
+
 @endsection

@@ -35,17 +35,14 @@ class TeamController extends Controller
         $teamTest =  new Team();
 
         $userId = $this->testId;
-
-        $teamId = $teamTest->getTeamId($userId);
-        $teamName = $teamTest->getTeamName($userId);
-
+        $teams = $teamTest->getTeams($userId);
 
         $rules_team_checkbox = $request->session()->get('rules_team_checkbox');
         $active_team_checkbox = $request->session()->get('active_team_checkbox');
 
         return view('Team.index',['rules_team_checkbox' => $rules_team_checkbox,
                                         'active_team_checkbox' => $active_team_checkbox,
-                                        'team_name'=>$teamName]);
+                                        'teams' => $teams] );
     }
 
     public function store(Request $request)

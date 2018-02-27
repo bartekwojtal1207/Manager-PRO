@@ -131,8 +131,8 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">
-        console.log("fire app blade php ");
-        $('.dropdown-toggle').dropdown()
+        // console.log("fire app blade php ");
+        // $('.dropdown-toggle').dropdown()
     </script>
     @yield('script-js')
 </body>

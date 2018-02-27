@@ -9,23 +9,33 @@ use Illuminate\Support\Facades\DB;
 
 class Team extends Model
 {
-
+    protected $team;
     protected $idTeam;// pobrac wartosc id z tabeli team gdzie user_id jest rowny profile id
-    protected  $nameTeam;
+    protected $nameTeam;
 
-    private function setTeamId($idTeam)
+    public function getTeams($userId)
     {
 
+        $this->team = DB::table('teams')
+            ->where('profile_id', $userId)
+            ->join('profiles', 'teams.profile_id','profiles.id')
+            ->orderBy('country_team', 'asc')
+            ->get();
+
+        return $this->team;
     }
 
     public function getTeamId($userId)
     {
         $this->idTeam = DB::table('teams')
             ->where('profile_id','=',$userId)
-            ->value('id');
+            ->pluck('id');
 
-        return $this->idTeam ;
-
+        $data = [];
+        foreach ($this->idTeam as $id_team) {
+            array_push($data, $id_team);
+        }
+        return $data;
     }
 
     public function getTeamName($idUser)
@@ -37,7 +47,7 @@ class Team extends Model
         $data = [];
 
         foreach ($this->nameTeam as $name_team) {
-            echo $name_team;
+//            echo $name_team;
             array_push($data, $name_team);
         }
 //        dd($this->nameTeam);
@@ -57,9 +67,9 @@ class Team extends Model
             ->pluck('name_profile');
 //            ->get();
 //         dd($users);
-        foreach ($users as $user) {
-            echo $user;
-        }
+//        foreach ($users as $user) {
+//            echo $user;
+//        }
 
     // dziala metoda laczenia
     }

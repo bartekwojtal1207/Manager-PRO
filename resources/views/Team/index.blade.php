@@ -1,4 +1,3 @@
-{{-- this is Team page--}}
 @extends('layouts.app')
 
 @section('title','Your team')
@@ -8,15 +7,13 @@
         <div class="row">
             <div class="col-12">
                 <h3> Dodaj swój zespół </h3>
-                @foreach ($team_name as $team)
-                        <p>{{$team}}</p>
-                    {{--wyswietla wszystkie nazwy teamow dla wybranego uzytkowniak--}}
-                @endforeach
             </div>
-
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div id="addDataTeam" >
                     {{Form::open(array('route' => 'team.store', 'files'=> true)) }}
+
                     <br>
                         <div class="form-group">
                             {{Form::label('name_team', 'Wpisz nazwę zespołu: ') }}
@@ -87,23 +84,31 @@
                     {{Form::close()}}
                 </div>
             </div>
-            <div class="col-md-6">
-                <table class="table table-active table-responsive table-striped table-bordered table-hover table-info" style="width: 92.5%; font-size: 12px;" >
-                    <tr><th>Nazwa zespołu</th><th>zwycięstwo</th><th>remis</th><th>porażka</th> <th>gol +</th> <th>gol -</th><th>punkty</th></tr>
-                    <tbody data-bind="foreach: people">
+            <div class="col-md-5">
+                <table class="table table-striped" style="font-size: 12px;" >
+                    <thead>
                         <tr>
-                            {{--zrobic pobieranie z bazy--}}
-                            <td data-bind="text: firstName"> - </td>
-                            <td data-bind="text: lastName"> - </td>
-                            <td  data-bind="text: test"> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td data-bind="text: testKraj"> - </td>
-                            <td> - </td>
+                            <th>Id</th>
+                            <th>Nazwa Drużyny</th>
+                            <th>Data założenia</th>
+                            <th>Związek piłkarski</th>
+                            <th>Kraj pochodzenia</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($teams as $team)
+                        <tr>
+                            <td>{{($team->id)}}</td>
+                            <td>{{($team->name_team)}}</td>
+                            <td>{{($team->founded_team)}}</td>
+                            <td>{{($team->country_team)}}</td>
+                            <td>{{($team->country_profile) === null ? '- brak -' : $team->country_profile}}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-3"></div>
         </div>
 
     </div>

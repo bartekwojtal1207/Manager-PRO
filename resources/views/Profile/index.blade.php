@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <th>adres mailowy:</th>
-                    <td>{{Auth::user()->email}}</td>
+                    <td>{{$profile->email}}</td>
                 </tr>
                 </table>
             </div>

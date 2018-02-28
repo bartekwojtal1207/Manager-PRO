@@ -19,7 +19,7 @@ class CreateTeamsTable extends Migration
             $table->string('name_team')->unique();
             $table->date('founded_team');
             $table->string('country_team');
-            $table->boolean('active')->default(false)->unique();
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }

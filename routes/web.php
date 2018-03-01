@@ -55,6 +55,12 @@ Route::post('/add_team',[
     'as'=> 'team.store'
 ]);
 
+// product Route
+Route::get('/product',[
+    'uses' => 'ProductController@index',
+    'as' => 'product.index'
+]);
+
 
 Auth::routes();
 

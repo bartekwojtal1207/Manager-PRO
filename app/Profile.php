@@ -22,44 +22,42 @@ class Profile extends Model
             ->join('users','profiles.user_id', 'users.id')
             ->first();
 
-        function integerToRoman($integer)
-        {
-            // Convert the integer into an integer (just to make sure)
-            $integer = intval($integer);
-            $result = '';
-
-            // Create a lookup array that contains all of the Roman numerals.
-            $lookup = array('M' => 1000,
-                'CM' => 900,
-                'D' => 500,
-                'CD' => 400,
-                'C' => 100,
-                'XC' => 90,
-                'L' => 50,
-                'XL' => 40,
-                'X' => 10,
-                'IX' => 9,
-                'V' => 5,
-                'IV' => 4,
-                'I' => 1);
-
-            foreach($lookup as $roman => $value){
-                // Determine the number of matches
-                $matches = intval($integer/$value);
-
-                // Add the same number of characters to the string
-                $result .= str_repeat($roman,$matches);
-
-                // Set the integer to be the remainder of the integer and the value
-                $integer = $integer % $value;
-            }
-
-            // The Roman numeral should be built, return it
-            dd($result);
-            return $result;
-        }
-        integerToRoman(7);
         return $this->profile;
+    }
+
+    public function integerToRoman($integer)
+    {
+        // Convert the integer into an integer (just to make sure)
+        $integer = intval($integer);
+        $romanInt = '';
+
+        // Create a lookup array that contains all of the Roman numerals.
+        $lookup = array('M' => 1000,
+            'CM' => 900,
+            'D' => 500,
+            'CD' => 400,
+            'C' => 100,
+            'XC' => 90,
+            'L' => 50,
+            'XL' => 40,
+            'X' => 10,
+            'IX' => 9,
+            'V' => 5,
+            'IV' => 4,
+            'I' => 1);
+
+        foreach($lookup as $roman => $value){
+            // Determine the number of matches
+            $matches = intval($integer/$value);
+
+            // Add the same number of characters to the string
+            $romanInt .= str_repeat($roman,$matches);
+
+            // Set the integer to be the remainder of the integer and the value
+            $integer = $integer % $value;
+        }
+        // The Roman numeral should be built, return it
+            return $romanInt;
     }
 
     public function getProfileId()
@@ -102,6 +100,11 @@ class Profile extends Model
     public function team()
     {
         return $this->hasMany(Team::class);
+    }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 
 }

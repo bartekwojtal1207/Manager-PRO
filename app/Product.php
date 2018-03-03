@@ -29,7 +29,7 @@ class Product extends Model
             ->where('user_id', '=',  $this->userId)
             ->whereId($productId)
             ->get();
-dd($this->product);
+
         return $this->product;
     }
 

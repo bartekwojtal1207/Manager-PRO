@@ -1,0 +1,30 @@
+.info-box {
+  border: 1px solid red;
+  padding: 60px;
+
+  .info-box-section {
+    display: flex;
+    justify-content: center;
+    .price-section {
+      .price {
+        font-size: 14px;
+      }
+    }
+  }
+
+}
+.opacity-element { opacity: .4; }
+.info-box {
+  .info-box-section{
+    .price-section{
+      .price.opacity-element { opacity: 1 !important;}
+    }
+  }
+}
+.info-box {
+  .info-box-section.opacity-element{ opacity: .5}};
+.test {
+  &:hover {
+    opacity: 0.6;
+  }
+}

@@ -29,16 +29,16 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        echo ('karta produktu');
-        echo $this->userId;
+//        echo ('karta produktu');
+//        echo $this->userId;
 
         $profile = new Profile();
         $profileName = $profile->getProfileName();
 
-        $product = new Product();
-        $product->getMyProducts(1);
+        $products = new Product();
+        $products = $products->getMyProducts(1);
 
-        return view('Product.index');
+        return view('Product.index', ['products' => $products]);
     }
 
     /**

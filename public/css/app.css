@@ -8350,3 +8350,33 @@ button.close {
   }
 }
 
+.info-box {
+  border: 1px solid red;
+  padding: 60px;
+}
+
+.info-box .info-box-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.info-box .info-box-section .price-section .price {
+  font-size: 14px;
+}
+
+.info-box .info-box-section .price-section .price.opacity-element {
+  opacity: 1 !important;
+}
+
+.info-box .info-box-section.opacity-element {
+  opacity: .5;
+}
+
+.test:hover {
+  opacity: 0.6;
+}
+

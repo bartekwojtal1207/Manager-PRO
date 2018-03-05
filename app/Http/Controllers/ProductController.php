@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CategoryType;
 use App\Product;
 use App\Profile;
 use Illuminate\Http\Request;
@@ -29,16 +30,23 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-//        echo ('karta produktu');
-//        echo $this->userId;
-
         $profile = new Profile();
         $profileName = $profile->getProfileName();
 
         $products = new Product();
         $products = $products->getMyProducts(1);
+        $category = '';
+        $categoryTitle = '';
+        foreach ($products as $product) {
+            $category = $product->category_product_id;
+        }
+        if (CategoryType::CategoryOne === $category) {
+            $categoryTitle = CategoryType::getDescription($category);
+        }
 
-        return view('Product.index', ['products' => $products]);
+        return view('Product.index',
+            ['products' => $products,
+            'categoryTitle' => $categoryTitle]);
     }
 
     /**

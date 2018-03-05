@@ -6,9 +6,9 @@
     @foreach($products as $product)
         <div class="row">
             <div class="col-md-12">
-
                     {{--{{dd($product)}}--}}
                     <h3 class="lead">Karta produtku: <b>{{$product->name_product}}</b></h3>
+                    <h5>Kategoria: <a role="button">{{$categoryTitle}}</a></h5>
                     <hr>
 
             </div>
@@ -18,7 +18,7 @@
                 <div class="info-box">
                     <div class="info-box-section">
                         <div class="price-section" id="opac">
-                            <p class="price text-center">
+                            <p class="price text-center opacity-element">
                                 {{ number_format($product->price, 2, ',', ' ') }}zł
                             </p>
                         </div>
@@ -43,9 +43,21 @@
                 <div class="btn btn-danger test">
                     klik klik klik
                 </div>
+                <hr>
+                <div>
+                    <h5 class="text-info text-left">Opis produktu: </h5>
+                    <div class="text-left product-description col-md-5">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.
+                    </div>
+
+                    <div class="more-info col-md-9">
+                        <a role="button" class="text-info">pokaż więcej...</a>
+                    </div>
+                </div>
             </div>
-
-
         </div>
     @endforeach
 @endsection

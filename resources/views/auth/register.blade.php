@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="col-md-5">
-                <div class="col-md-12 col-sm-12 col-xs-12" style="border: 1px solid black;">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="panel-body">
                         <span>Register forms</span>
                         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -110,7 +110,7 @@
             </div>
 
             <div class="col-md-5 col-md-offset-1">
-                <div class="col-md-12 col-sm-12 col-xs-12" style="border: 1px solid black;">
+                <div class="col-md-12 col-sm-12 col-xs-12">
 
                     <div class="panel-body">
                         <span>cos tam cos tam</span>
@@ -148,7 +148,7 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12" style="border: 1px solid black;">
+                <div class="col-md-12 col-sm-12 col-xs-12">
 
                     <div class="panel-body">
                         <span>cos tam cos tam 2</span>
@@ -173,7 +173,7 @@
                         {{Form::close()}}
                     </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12" style="border: 1px solid black;">
+                <div class="col-md-12 col-sm-12 col-xs-12">
 
                     <div class="panel-body">
                         <span>cos tam cos tam 3</span>

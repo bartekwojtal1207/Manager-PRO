@@ -75,6 +75,7 @@
                         @guest
                             <li><a href="{{ route('login') }}" style="padding: 0px;">Login</a></li>
                             <li><a href="{{ route('register') }}" style="padding: 0px;">Register</a></li>
+                            <li><a href="{{ route('product.index') }}" style="padding: 0px;">Product</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -88,6 +89,7 @@
                                     <li>
                                         <a href="{{ route('team.index') }}">Twoje kluby</a>
                                     </li>
+                                    <li><a href="{{ route('product.index') }}">Produkty</a></li>
                                     <hr>
                                     <li>
                                         <a href="{{ route('logout') }}"

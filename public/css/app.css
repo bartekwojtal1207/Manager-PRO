@@ -8368,6 +8368,10 @@ button.close {
   font-size: 14px;
 }
 
+.opacity-element {
+  opacity: .4;
+}
+
 .info-box .info-box-section .price-section .price.opacity-element {
   opacity: 1 !important;
 }
@@ -8378,5 +8382,16 @@ button.close {
 
 .test:hover {
   opacity: 0.6;
+}
+
+.product-description {
+  height: 48px;
+  overflow: hidden;
+  color: #505050;
+}
+
+.more-info {
+  margin-top: 10px;
+  padding-top: 10px;
 }
 

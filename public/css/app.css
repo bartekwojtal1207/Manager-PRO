@@ -8385,7 +8385,7 @@ button.close {
 }
 
 .product-description {
-  height: 48px;
+  height: 50px;
   overflow: hidden;
   color: #505050;
 }
@@ -8393,5 +8393,24 @@ button.close {
 .more-info {
   margin-top: 10px;
   padding-top: 10px;
+}
+
+.test-li {
+  font-size: 12px;
+  list-style: none;
+  height: 50px;
+  border: 1px solid #1f648b;
+}
+
+.test-li .test-link .test-p {
+  line-height: 42px;
+}
+
+.test-li .test-link .test-p .test-small {
+  float: right;
+}
+
+.active-li {
+  border-color: greenyellow !important;
 }
 

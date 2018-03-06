@@ -35,13 +35,13 @@ class ProductController extends Controller
 
         $products = new Product();
         $products = $products->getMyProducts(1);
-        $category = '';
+        $categoryId = '';
         $categoryTitle = '';
         foreach ($products as $product) {
-            $category = $product->category_product_id;
+            $categoryId = $product->category_product_id;
         }
-        if (CategoryType::CategoryOne === $category) {
-            $categoryTitle = CategoryType::getDescription($category);
+        if (CategoryType::CategoryOne === $categoryId) {
+            $categoryTitle = CategoryType::getDescription($categoryId);
         }
 
         return view('Product.index',

@@ -175,6 +175,59 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a role="button">HTML</a></li>
+                            <li><a role="button">CSS</a></li>
+                            <li><a role="button">JavaScript</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a role="button">HTML</a></li>
+                            <li><a role="button">CSS</a></li>
+                            <li><a role="button">JavaScript</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a role="button">HTML</a></li>
+                            <li><a role="button">CSS</a></li>
+                            <li><a role="button">JavaScript</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a role="button">HTML</a></li>
+                            <li><a role="button">CSS</a></li>
+                            <li><a role="button">JavaScript</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdown-link">
+
+                    <a role="button" class="btn dropdown-show" style="border: 1px solid red;">
+                        pokaż
+                    </a>
+                    <a role="button" class="btn dropdown-hide hidden" style="border: 1px solid red;">
+                        ukryj
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
 
     @endforeach
 @endsection

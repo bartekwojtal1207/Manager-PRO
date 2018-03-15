@@ -6,8 +6,11 @@ use App\Enums\CategoryType;
 use App\Product;
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Query\Builder;
+use League\Flysystem\Config;
+
 
 class ProductController extends Controller
 {
@@ -28,13 +31,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $productId)
     {
-        $profile = new Profile();
-        $profileName = $profile->getProfileName();
-
+//        dd($productId);
         $products = new Product();
-        $products = $products->getMyProducts(1);
+        $products = $products->getMyProducts($productId);
         $categoryId = '';
         $categoryTitle = '';
         foreach ($products as $product) {

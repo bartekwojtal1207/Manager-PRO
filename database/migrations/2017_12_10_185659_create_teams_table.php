@@ -16,7 +16,7 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('profile_id');
-            $table->string('name_team')->unique();
+            $table->string('name_team');
             $table->date('founded_team');
             $table->string('country_team');
             $table->boolean('active')->default(false);

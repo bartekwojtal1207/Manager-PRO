@@ -19,6 +19,7 @@
         <div class="slider" style="width: 250px; height: 250px; margin: auto">
             <div class="slider-item" style=" height: 190px;">
                 <a href="#" style="width: 100%; height: 100%; display: block">
+                    <img src="{{ asset('img/sliderPhoto/homeOffice2.jpg') }}" alt="edytuj swój profil" class="img-responsive">
                     <p style="display: block; margin: auto; height: 100%; line-height: 165px" class="text-center">Przejdź do swojego profilu</p>
                 </a>
             </div>
@@ -29,12 +30,17 @@
                 </a>
             </div>
             <div class="slider-item" style=" height: 165px;">
-                <a href="{{route('team.index')}}" style="width: 100%; height: 100%; display: block"> team</a>
+                <a href="{{route('team.index')}}" style="width: 100%; height: 100%; display: block"> <img src="{{ asset('img/sliderPhoto/homeOffice2.jpg') }}" alt="edytuj swój profil" class="img-responsive"></a>
             </div>
         </div>
     </div>
 </div>
 
+
 @endguest
 
+@section('script-js')
+    {{-- scritpt only for edit profile page--}}
+    <script src="{{ asset('js/mainpage.js') }}"></script>
+@endsection
 @endsection

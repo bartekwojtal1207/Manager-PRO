@@ -15,10 +15,18 @@
     <!-- bootstrap styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <!--slider  -->
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/slick-theme.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}"/>
     @yield('style-css')
-
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <!-- slider slick js -->
+    <script src="{{ asset('js/slick.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113518868-1"></script>
     <script>
@@ -41,6 +49,7 @@
             ga('send', 'pageview');
         </script>
         <!-- End Google Analytics -->
+    {{--<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>--}}
 
 </head>
 <body>
@@ -89,7 +98,7 @@
                                     <li>
                                         <a href="{{ route('team.index') }}">Twoje kluby</a>
                                     </li>
-                                    <li><a href="{{ route('product.index') }}">Produkty</a></li>
+{{--                                    <li><a href="{{ route('product.index') }}">Produkty</a></li>--}}
                                     <hr>
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -120,22 +129,11 @@
     {{--<div class="footer" style="  position: fixed; bottom: 0 " >--}}
         {{--<h3>footer</h3>--}}
     {{--</div>--}}
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <!-- slider slick js -->
-    <script src="{{ asset('js/slick.js') }}"></script>
 
 
     <!-- Scripts -->
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript">
-        // console.log("fire app blade php ");
-        // $('.dropdown-toggle').dropdown()
-    </script>
+
     @yield('script-js')
 </body>
 </html>

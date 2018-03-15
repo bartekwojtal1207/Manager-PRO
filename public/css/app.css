@@ -8422,3 +8422,102 @@ button.close {
   margin-bottom: 50px;
 }
 
+.product-slider-left .product-slider-list {
+  list-style: none;
+  overflow: hidden;
+  padding: 1px;
+  margin: 1px;
+}
+
+.product-slider-left .product-slider-list:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
+.slick-list {
+  padding: 0 !important;
+}
+
+.product-info {
+  font-family: 'Lora', serif;
+  letter-spacing: 1px;
+}
+
+.product-info h1 {
+  font-size: 30px;
+}
+
+.product-info p {
+  font-size: 14px;
+  color: #505050;
+}
+
+.product-info span {
+  font-size: 20px;
+  color: #292929;
+}
+
+#addToCart {
+  background-color: #fa5400;
+  color: #fff;
+  outline: none;
+  border-color: #fa5400;
+  width: 50%;
+  height: 40px;
+}
+
+#addToCart:hover {
+  background-color: #ddd;
+  color: #333333;
+}
+
+.add-to-cart-section {
+  width: 100%;
+  height: 60px;
+}
+
+.links {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.links .text-small {
+  display: inline-block;
+  text-decoration: underline;
+}
+
+p.text-left {
+  display: block;
+}
+
+.hr {
+  margin-top: 50px;
+}
+
+h3.title-sec-rec {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.remocended-product-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.remocended-product-section .remocended-product {
+  max-width: 250px;
+  max-height: 350px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.remocended-product-section .remocended-product img {
+  max-width: 220px;
+  max-height: 220px;
+}
+
+.remocended-product-section .remocended-product .title-recomaneded-product {
+  font-size: 25px;
+}
+

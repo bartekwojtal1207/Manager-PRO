@@ -60,9 +60,8 @@ Route::get('/product/{productId}',[
     'uses' => 'ProductController@index',
     'as' => 'product.index',
     function ($id) {
-        //
+    //
     }
-
 ]);
 
 

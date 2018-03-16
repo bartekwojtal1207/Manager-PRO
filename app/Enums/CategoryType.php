@@ -20,7 +20,7 @@ final class CategoryType extends Enum
     {
         switch ($value) {
             case self::CategoryOne:
-                return 'Piłki';
+                return 'Piłka nożna';
             case self::OptionTwo:
                 return 'Buty';
             case self::OptionThree:

@@ -33,21 +33,25 @@ class ProductController extends Controller
      */
     public function index(Request $request, $productId)
     {
-//        dd($productId);
         $products = new Product();
-        $products = $products->getMyProducts($productId);
-        $categoryId = '';
-        $categoryTitle = '';
-        foreach ($products as $product) {
-            $categoryId = $product->category_product_id;
+
+        $product = $products->getOneProduct($productId);
+        $sellerName = $products->getSellerName($productId);
+
+        $categoryId = 0;
+
+        foreach ($product as $productItem) {
+            $categoryId = $productItem->category_product_id;
         }
-        if (CategoryType::CategoryOne === $categoryId) {
-            $categoryTitle = CategoryType::getDescription($categoryId);
-        }
+        $recomendedProducts = $products->getAllProducts($categoryId,8, $productId);
+
+        $categoryTitle = CategoryType::getDescription($categoryId);
 
         return view('Product.index',
-            ['products' => $products,
-            'categoryTitle' => $categoryTitle]);
+            ['products' => $product,
+            'categoryTitle' => $categoryTitle,
+            'sellerName' => $sellerName,
+            'recomendedProducts' => $recomendedProducts]);
     }
 
     /**

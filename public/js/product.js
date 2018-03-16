@@ -100,13 +100,18 @@ var sliderNav = $('.slider-nav'),
         focusOnSelect: true
     });
 
-    var recomendedSlider = $('.remocended-product-section');
-console.log(recomendedSlider);
-    recomendedSlider.slick({
-        // slidesToShow: 1,
-        // slidesToScroll: 1
-    });
+    var recomendedSlider = $('.remocended-product').parent();
 
+
+
+    recomendedSlider.slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        centerMode: true,
+        dots: true,
+        arrow: true
+    });
 
 
 

@@ -3,235 +3,6 @@
 @section('title','Product')
 
 @section('content')
-    {{--@foreach($products as $product)--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-12">--}}
-                    {{--<h3 class="lead">Karta produtku: <b>{{$product->name_product}}</b></h3>--}}
-                    {{--<h5>Kategoria: <a role="button">{{$categoryTitle}}</a></h5>--}}
-                    {{--<hr>--}}
-
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-3">--}}
-                {{--<div class="info-box">--}}
-                    {{--<div class="info-box-section">--}}
-                        {{--<div class="price-section" id="opac">--}}
-                            {{--<p class="price text-center opacity-element">--}}
-                                {{--{{ number_format($product->price, 2, ',', ' ') }}zł--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="info-box-section">--}}
-                        {{--<p class="text-center text-info lead">--}}
-                            {{--produkt jest dostępny--}}
-                        {{--</p>--}}
-                    {{--</div>--}}
-                    {{--<div class="info-box-section">--}}
-
-                    {{--</div>--}}
-
-                    {{--<div class="info-box-section">--}}
-                        {{--<button class="btn btn-success text-center">Dodaj do koszyka</button>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-
-            {{--</div>--}}
-            {{--<div class="col-md-9">--}}
-                {{--<div class="btn btn-danger test">--}}
-                    {{--klik klik klik--}}
-                {{--</div>--}}
-                {{--<hr>--}}
-                {{--<div>--}}
-                    {{--<h5 class="text-info text-left">Opis produktu: </h5>--}}
-                    {{--<div class="text-left product-description hidden-md-down col-md-5">--}}
-                        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.--}}
-                            {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.--}}
-                            {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.--}}
-                            {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id orci mattis, lobortis turpis nec, blandit ligula. Vivamus et purus at ex ornare auctor. Curabitur mattis leo mauris, non pretium tellus facilisis sit amet. Aliquam erat volutpat. Aenean nunc velit, semper et venenatis eu, tincidunt in augue. Fusce a varius turpis. Quisque aliquam cursus leo, at finibus leo commodo tincidunt. Suspendisse vel tellus odio.--}}
-                    {{--</div>--}}
-
-                    {{--<div class="more-info col-md-9">--}}
-                        {{--<a role="button" class="text-info hidden-md-down">pokaż więcej...</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="more-info-hidden hidden col-md-9">--}}
-                        {{--<a role="button" class="text-info hidden-md-down">ukryj...</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div>--}}
-
-
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-3">--}}
-                {{--<ul class="test-ul">--}}
-                    {{--<li class="test-li active-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test--}}
-                                {{--<small class="test-small">small </small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test--}}
-                                {{--<small class="test-small">small </small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test test test test--}}
-                                {{--<small class="test-small">small smsall small</small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test test test test--}}
-                                {{--<small class="test-small">small smsall small</small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-3">--}}
-                {{--<ul class="test-ul">--}}
-                    {{--<li class="test-li active-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test--}}
-                                {{--<small class="test-small">small </small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test--}}
-                                {{--<small class="test-small">small </small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test test test test--}}
-                                {{--<small class="test-small">small smsall small</small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test test test test--}}
-                                {{--<small class="test-small">small smsall small</small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-3">--}}
-                {{--<ul class="test-ul">--}}
-                    {{--<li class="test-li active-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test--}}
-                                {{--<small class="test-small">small </small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test--}}
-                                {{--<small class="test-small">small </small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test test test test--}}
-                                {{--<small class="test-small">small smsall small</small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="test-li">--}}
-                        {{--<a class="test-link" role="button">--}}
-                            {{--<p class="test-p">--}}
-                                {{--test test test test--}}
-                                {{--<small class="test-small">small smsall small</small>--}}
-                            {{--</p>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-12">--}}
-                {{--<div class="dropdown-container">--}}
-                    {{--<div class="dropdown">--}}
-                        {{--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example--}}
-                            {{--<span class="caret"></span></button>--}}
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<li><a role="button">HTML</a></li>--}}
-                            {{--<li><a role="button">CSS</a></li>--}}
-                            {{--<li><a role="button">JavaScript</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--<div class="dropdown">--}}
-                        {{--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example--}}
-                            {{--<span class="caret"></span></button>--}}
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<li><a role="button">HTML</a></li>--}}
-                            {{--<li><a role="button">CSS</a></li>--}}
-                            {{--<li><a role="button">JavaScript</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--<div class="dropdown">--}}
-                        {{--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example--}}
-                            {{--<span class="caret"></span></button>--}}
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<li><a role="button">HTML</a></li>--}}
-                            {{--<li><a role="button">CSS</a></li>--}}
-                            {{--<li><a role="button">JavaScript</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--<div class="dropdown">--}}
-                        {{--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example--}}
-                            {{--<span class="caret"></span></button>--}}
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<li><a role="button">HTML</a></li>--}}
-                            {{--<li><a role="button">CSS</a></li>--}}
-                            {{--<li><a role="button">JavaScript</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="dropdown-link">--}}
-
-                    {{--<a role="button" class="btn dropdown-show" style="border: 1px solid red;">--}}
-                        {{--pokaż--}}
-                    {{--</a>--}}
-                    {{--<a role="button" class="btn dropdown-hide hidden" style="border: 1px solid red;">--}}
-                        {{--ukryj--}}
-                    {{--</a>--}}
-
-                {{--</div>--}}
-            {{--</div>--}}
-
-        {{--</div>--}}
-    {{--@endforeach--}}
-
-
-    {{--{{ dd($products) }}--}}
 
     <div class="row">
         <div class="col-md-1">
@@ -253,15 +24,27 @@
             </div>
         </div>
         <div class="col-md-4">
+            @foreach( $products as $product )
             <section class="product-info">
-                @foreach( $products as $product )
                 <h1>{{ $product->name_product}}</h1>
                  <p> {{$categoryTitle}}</p>
-                 <span> {{ number_format($product->price, 2, ',', ' ') }} zł</span>
-                @endforeach
+                {{--{{dd($product->previous_price)}}--}}
+                    <span class="price-section">
+                        {{--{{dd(intval($product->price))}}--}}
+                        @if( intval($product->previous_price) !== intval($product->price) )
+                            <span class="previous-price">poprzednia cena: <s>{{ number_format(intval($product->previous_price), 2, ',', ' ') }} zł</s></span>
+                        @endif
+                        <span class="price">cena: {{ number_format($product->price, 2, ',', ' ') }} zł</span>
+                        @if( intval($product->final_price > 0 ))
+                        <span class="final-price text-success">zyskujesz: {{ number_format(intval($product->final_price), 2, ',', ' ') }} zł</span>
+                        @endif
+                    </span>
+
+
             </section>
             <hr>
             <div class="add-to-cart-section">
+                <span class="accceblity text-info">Produkt: {{$product->product_status == '1' ? 'dostępny' : 'niedostępny'}}</span>
                 <form>
                     <button id="addToCart" class="btn btn-info col-md-12">Dodaj do koszyka</button>
                 </form>
@@ -270,7 +53,10 @@
                 <p class="text-right text-small">zapisz</p>
                 <p class="text-right text-small">udostępnij</p>
             </div>
-            <hr class="hr">
+            <div class="seller pull-left">
+                <p class="seller-text">wystawiono przez: <span class="text-info">{{ $sellerName }}</span> </p>
+                <hr class="hr">
+            </div>
             <p class="text-left col-md-12">
                 Bezpłatna standardowa dostawa dla posiadaczy konta NikePlus.
                 Standardowa dostawa trwa 3–7 dni; przesyłki dostarczamy przez 5 dni w tygodniu.
@@ -279,21 +65,23 @@
                 Zamówione produkty można zwrócić bezpłatnie i bez podania przyczyny w ciągu 30 dni.
                 Obowiązują pewne wyjątki. Dowiedz się więcej o opcjach dostawy zamówień ze sklepu Nike.com i o zasadach                     dotyczących zwrotów.
             </p>
+            @endforeach
         </div>
     </div>
     <div class="row">
         <h3 class="title-sec-rec col-md-12"> PRODUKTY, które mogą ci się spodobać</h3>
         <section class="remocended-product-section">
-            @for ($j = 0; $j < 3; $j++ )
+                @foreach($recomendedProducts as $recomendedProduct)
                 <div class="remocended-product">
-                    <img src="{{asset('img/sliderPhoto/product'.$j.'jpg')}}" alt="rekomendowane" class="img img-responsive">
+                    <img src="{{asset('img/sliderPhoto/product'.$recomendedProduct->id.'.jpg')}}" alt="rekomendowane" class="img img-responsive">
                     <hr>
-                    <p class="title-recomaneded-product">tytuł produktu</p>
-                    <span class="price-recomaneded-product"> cena produktu </span>
+                    <p class="title-recomaneded-product text-center">{{$recomendedProduct->name_product}}</p>
+                    <span class="price-recomaneded-product text-center"> {{ number_format(intval($recomendedProduct->price), 2, ',', ' ') }} zł</span>
+                    <a href="{{route('product.index',$recomendedProduct->id)}}">
+                        sprawdź
+                    </a>
                 </div>
-            @endfor
-
-
+                @endforeach
         </section>
     </div>
 @endsection

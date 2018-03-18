@@ -8539,3 +8539,40 @@ h3.title-sec-rec {
   text-decoration: underline;
 }
 
+h5.category-title {
+  margin: 5px 0 5px 0;
+}
+
+.products-list-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.products-list-container .products-list {
+  margin: 5px;
+  height: 120px;
+  border: 1px solid #c6c6c6;
+  min-width: 100px;
+}
+
+.products-list-container .products-list p {
+  margin-top: 5px;
+}
+
+.products-list-container .products-list p:last-of-type {
+  margin-bottom: 7px;
+}
+
+.products-list-container .products-list .list-product-img {
+  width: 70px;
+  height: 55px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.products-list-container .products-list .price-element {
+  width: 100%;
+  margin-top: 5px;
+}
+

@@ -102,8 +102,6 @@ var sliderNav = $('.slider-nav'),
 
     var recomendedSlider = $('.remocended-product').parent();
 
-
-
     recomendedSlider.slick({
         infinite: true,
         slidesToShow: 4,

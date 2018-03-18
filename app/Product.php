@@ -35,6 +35,15 @@ class Product extends Model
 
     }
 
+    public function getProductsSortByCategory()
+    {
+        $this->listProducts = DB::table('products')
+            ->orderBy('category_product_id', 'asc')
+            ->get();
+        return $this->listProducts;
+    }
+
+
 /*
  * param int($productId)
  * return array(product)

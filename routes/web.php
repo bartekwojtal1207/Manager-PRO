@@ -58,10 +58,12 @@ Route::post('/add_team',[
 // product Route
 Route::get('/product/{productId}',[
     'uses' => 'ProductController@index',
-    'as' => 'product.index',
-    function ($id) {
-    //
-    }
+    'as' => 'product.index'
+]);
+// listing products
+Route::get('/products-list',[
+    'uses' => 'ProductController@show',
+    'as' => 'product.show',
 ]);
 
 

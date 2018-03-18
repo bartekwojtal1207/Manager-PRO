@@ -81,9 +81,27 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+
+        $products = new Product();
+        $products = $products->getProductsSortByCategory();
+        $categoryTitles = [];
+        foreach ($products as $product) {
+            array_push($categoryTitles, $product->category_product_id);
+        }
+
+        $categoryTitles = array_unique($categoryTitles);
+        $category = [];
+        foreach ($categoryTitles as $categoryTitle) {
+            array_push($category, $categoryTitle );
+        }
+
+        return view('Product.products-list',[
+            'products' => $products,
+            'category' => $category
+        ]);
+
     }
 
     /**

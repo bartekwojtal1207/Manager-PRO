@@ -4,8 +4,9 @@
 
 @section('content')
 <div class="row">
-    <h3 class="text-left col-md-11">Wszystkie produkty </h3>
+    <h3 class="text-left col-md-9">Wszystkie produkty </h3>
     <br>
+    <a href="{{route('product.create')}}" class="btn btn-warning col-md-1 linkAddProduct">Dodaj produkt</a>
     <button id="changeViewListingBtn" class="btn col-md-1">Zmień widok</button>
 </div>
 @foreach($category as $categoryTitle)

@@ -78,5 +78,23 @@ class Product extends Model
     }
 
 
+    public function addProduct($nameProduct, $price, $statusProduct, $freeShipment)
+    {
 
+        $this->userId = Auth::id();
+
+
+        DB::table('products')->insertGetId(
+            ['user_id' => $this->userId,
+                'category_product_id' => '1',
+                'name_product' => $nameProduct,
+                'price' => $price,
+                'previous_price' => '0',
+                'product_description' => 'testesras',
+                'product_status' => $statusProduct,
+                'free_shipment' => $freeShipment]
+        );
+
+
+    }
 }

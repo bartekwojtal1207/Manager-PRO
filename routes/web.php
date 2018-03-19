@@ -60,11 +60,20 @@ Route::get('/product/{productId}',[
     'uses' => 'ProductController@index',
     'as' => 'product.index'
 ]);
+Route::Get('/product-create/', [
+    'uses' => 'ProductController@create',
+    'as' => 'product.create'
+]);
+Route::Post('/product-add', [
+    'uses' => 'ProductController@store',
+    'as' => 'product.store'
+]);
 // listing products
 Route::get('/products-list',[
     'uses' => 'ProductController@show',
     'as' => 'product.show',
 ]);
+
 
 
 Auth::routes();

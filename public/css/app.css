@@ -8350,6 +8350,10 @@ button.close {
   }
 }
 
+.linkAddProduct {
+  margin-right: 15px;
+}
+
 .product-info .price-section {
   display: -webkit-box;
   display: -ms-flexbox;

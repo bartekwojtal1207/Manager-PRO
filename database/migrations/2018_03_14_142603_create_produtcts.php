@@ -14,7 +14,7 @@ class CreateProdutcts extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('category_product_id');
             $table->integer('user_id');
 //            $table->foreign('user_id')->references('id')->on('users');

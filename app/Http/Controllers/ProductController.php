@@ -59,9 +59,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+
+        return view('Product.create-product');
+
+
+
+
+
     }
 
     /**
@@ -72,7 +79,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newProduct = new Product();
+
+
+        $nameProduct = $request->name_product;
+        $price = $request->price;
+        $statusProduct = $request->product_status;
+        $freeShipment = $request->free_shipment;
+
+        if (($statusProduct === '1') && (! is_null($statusProduct)) && (!empty($statusProduct)) ){
+            $statusProduct = '1';
+        }else {
+            $statusProduct = '0';
+        }
+
+
+        if (($freeShipment === '1') && (! is_null($freeShipment)) && (!empty($freeShipment)) ){
+            $freeShipment = '1';
+        }else {
+            $freeShipment = '0';
+        }
+
+        $newProduct->addProduct($nameProduct, $price, $statusProduct, $freeShipment);
+
+
     }
 
     /**

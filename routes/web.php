@@ -69,11 +69,15 @@ Route::Post('/product-add', [
     'as' => 'product.store'
 ]);
 // listing products
-Route::get('/products-list',[
+Route::get('/products-list', [
     'uses' => 'ProductController@show',
     'as' => 'product.show',
 ]);
-
+// orders test
+Route::get('/orders/{productId}', [
+    'uses' => 'ProductController@test',
+    'as' => 'orders.test',
+]);
 
 
 Auth::routes();

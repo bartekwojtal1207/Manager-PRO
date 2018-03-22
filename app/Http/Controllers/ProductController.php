@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CategoryType;
+use App\Orders;
 use App\Product;
 use App\Profile;
 use Illuminate\Http\Request;
@@ -101,7 +102,7 @@ class ProductController extends Controller
         }
 
         $newProduct->addProduct($nameProduct, $price, $statusProduct, $freeShipment);
-
+        return view('Product.create-product');
 
     }
 
@@ -166,5 +167,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function test(Request $request, $productId)
+    {
+        $orders = new Orders();
+        $orders->setBasket($productId);
+
     }
 }

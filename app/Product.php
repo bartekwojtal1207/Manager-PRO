@@ -83,7 +83,6 @@ class Product extends Model
 
         $this->userId = Auth::id();
 
-
         DB::table('products')->insertGetId(
             ['user_id' => $this->userId,
                 'category_product_id' => '1',
@@ -94,7 +93,9 @@ class Product extends Model
                 'product_status' => $statusProduct,
                 'free_shipment' => $freeShipment]
         );
-
-
+    }
+    public function orders()
+    {
+        return $this->belongsToMany('App\Orders');
     }
 }

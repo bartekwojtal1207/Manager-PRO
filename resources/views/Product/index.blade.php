@@ -46,7 +46,7 @@
             <div class="add-to-cart-section">
                 <span class="accceblity text-info">Produkt: {{$product->product_status == '1' ? 'dostępny' : 'niedostępny'}}</span>
                 <form>
-                    <button id="addToCart" class="btn btn-info col-md-12">Dodaj do koszyka</button>
+                    <a id="addToCart" role="button" href="{{route('orders.test',$product->id)}}" class="btn btn-info col-md-12">Dodaj do koszyka</a>
                 </form>
             </div>
             <div class="links pull-right">

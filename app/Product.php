@@ -82,18 +82,23 @@ class Product extends Model
     {
 
         $this->userId = Auth::id();
+        try{
+            DB::table('products')->insertGetId(
+                ['user_id' => $this->userId,
+                    'category_product_id' => '1',
+                    'name_product' => $nameProduct,
+                    'price' => $price,
+                    'previous_price' => '0',
+                    'description_product' => 'testesras',
+                    'product_status' => $statusProduct]
+            );
+        }
+        catch(\Exception $e){
+            echo 'gówno';
+        }
 
-        DB::table('products')->insertGetId(
-            ['user_id' => $this->userId,
-                'category_product_id' => '1',
-                'name_product' => $nameProduct,
-                'price' => $price,
-                'previous_price' => '0',
-                'product_description' => 'testesras',
-                'product_status' => $statusProduct,
-                'free_shipment' => $freeShipment]
-        );
     }
+
     public function orders()
     {
         return $this->belongsToMany('App\Orders');

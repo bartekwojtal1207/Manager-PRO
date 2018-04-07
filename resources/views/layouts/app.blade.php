@@ -50,6 +50,24 @@
         </script>
         <!-- End Google Analytics -->
     {{--<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>--}}
+    <script>
+        $(function(){
+            var menuWitdh = $('.top-menu-list').width();
+            console.log(menuWitdh);
+
+            $('.top-menu-item').each(function () {
+                var leftPosition = $(this).position().left;
+                if ( leftPosition > ( menuWitdh - 75 ) ) { $(this).css('display', 'none') }
+
+            });
+
+            var hidden_items = $('.top-menu-list .top-menu-item').filter(function(){
+                return $(this).css('display') == "none"
+            }).length;
+            if ( hidden_items > 0 ) { $('.js-hidden-count-element').text("ukryto " + hidden_items + " elementów"); }
+
+        });
+    </script>
 
 </head>
 <body>
@@ -117,9 +135,29 @@
                     </ul>
                 </div>
             </div>
+            <div class="container">
+                <div class="menu">
+                    <ul class="top-menu-list">
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">test</li>
+                    </ul>
+                </div>
+                <span class="js-hidden-count-element"></span>
+            </div>
         </nav>
-
-
     </div>
 
     <div class="container" >

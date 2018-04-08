@@ -57,7 +57,7 @@
 
             $('.top-menu-item').each(function () {
                 var leftPosition = $(this).position().left;
-                if ( leftPosition > ( menuWitdh - 75 ) ) { $(this).css('display', 'none') }
+                if ( leftPosition > ( menuWitdh - 75 ) ) { $(this).css('display', 'none'); }
 
             });
 
@@ -65,6 +65,7 @@
                 return $(this).css('display') == "none"
             }).length;
             if ( hidden_items > 0 ) { $('.js-hidden-count-element').text("ukryto " + hidden_items + " elementów"); }
+            else { $('.js-hidden-count-element').css('display', 'none'); $('.top-menu-list').css( 'justify-content', 'space-evenly'); }
 
         });
     </script>
@@ -138,21 +139,25 @@
             <div class="container">
                 <div class="menu">
                     <ul class="top-menu-list">
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
-                        <li class="top-menu-item">test</li>
+                        <li class="top-menu-item">Strona główna</li>
+                        <li class="top-menu-item"><a href="{{route('product.show')}}"></a>Produkty</li>
+                        <li class="top-menu-item">Kategorie</li>
+                        <li class="top-menu-item">Twoje konto</li>
+                        <li class="top-menu-item">Użytkownicy</li>
+                        <li class="top-menu-item">Forum</li>
+                        <li class="top-menu-item">Twoje zamówienia</li>
+                        <li class="top-menu-item">
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                    Dropdown link
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <span class="js-hidden-count-element"></span>

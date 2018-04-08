@@ -8642,7 +8642,7 @@ h5.category-title {
 }
 
 .menu .top-menu-list .top-menu-item {
-  min-width: 80px;
+  min-width: 100px;
   height: 43px;
   border: 1px solid #999;
   margin: 3px 8px 3px 0;
@@ -8660,6 +8660,16 @@ h5.category-title {
 .menu .top-menu-list .top-menu-item:hover {
   cursor: pointer;
   opacity: .7;
+}
+
+.dropdown .btn {
+  width: 94%;
+  padding-right: 0;
+  padding-left: 0;
+  background-color: #999;
+  border: none;
+  color: white;
+  font-size: 12px;
 }
 
 .js-hidden-count-element {

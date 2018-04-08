@@ -30,10 +30,14 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        $profile = new Profile();
-        $profile->getProfile();
+        try {
+            $profile = new Profile();
+            $profile->getProfile();
+            return view('Profile.index', ['profile' => $profile->getProfile()]);
+        }catch(\Exception $e) {
+            return view('home');
+        }
 
-        return view('Profile.index', ['profile' => $profile->getProfile()]);
     }
 
     public function save()

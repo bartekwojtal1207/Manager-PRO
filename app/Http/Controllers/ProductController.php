@@ -6,6 +6,8 @@ use App\Enums\CategoryType;
 use App\Orders;
 use App\Product;
 use App\Profile;
+use Doctrine\Common\Annotations\CachedReader;
+use Illuminate\Filesystem\Cache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -127,6 +129,7 @@ class ProductController extends Controller
         foreach ($categoryTitles as $categoryTitle) {
             array_push($category, $categoryTitle );
         }
+
 
         return view('Product.products-list',[
             'products' => $products,

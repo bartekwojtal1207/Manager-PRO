@@ -1,0 +1,15 @@
+@font-face {
+  font-family: OptimusPrinceps;
+  src: url('/public/fonts/vendor/new/PierSans-black.otf');
+}
+
+
+#msg{
+  position: absolute;
+  top: 300px;
+  left: 33%;
+  color: #000;
+  font-weight: bold;
+  font-family: OptimusPrinceps;
+  font-size: 70px;
+}

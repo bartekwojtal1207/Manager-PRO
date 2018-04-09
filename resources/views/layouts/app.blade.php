@@ -16,8 +16,6 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <!--slider  -->
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-    <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/slick-theme.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}"/>
     @yield('style-css')
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -25,8 +23,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <!-- slider slick js -->
-    <script src="{{ asset('js/slick.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113518868-1"></script>
     <script>
@@ -52,26 +48,35 @@
     {{--<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>--}}
     <script>
         $(function(){
-            var menuWitdh = $('.top-menu-list').width();
-            console.log(menuWitdh);
 
-            $('.top-menu-item').each(function () {
-                var leftPosition = $(this).position().left;
-                if ( leftPosition > ( menuWitdh - 75 ) ) { $(this).css('display', 'none'); }
+            function setTopMenuWidth() {
+                var menuWitdh = $('.top-menu-list').width();
 
-            });
+                $('.top-menu-item').each(function () {
+                    var leftPosition = $(this).position().left;
+                    if ( leftPosition > ( menuWitdh - 75 ) ) { $(this).css('display', 'none'); }
 
-            var hidden_items = $('.top-menu-list .top-menu-item').filter(function(){
-                return $(this).css('display') == "none"
-            }).length;
-            if ( hidden_items > 0 ) { $('.js-hidden-count-element').text("ukryto " + hidden_items + " elementów"); }
-            else { $('.js-hidden-count-element').css('display', 'none'); $('.top-menu-list').css( 'justify-content', 'space-evenly'); }
+                });
 
+                var hidden_items = $('.top-menu-list .top-menu-item').filter(function(){
+                    return $(this).css('display') == "none"
+                }).length;
+                if ( hidden_items > 0 ) { $('.js-hidden-count-element').text("ukryto " + hidden_items + " elementów"); }
+                else { $('.js-hidden-count-element').css('display', 'none'); $('.top-menu-list').css( 'justify-content', 'space-evenly'); }
+            }
+
+
+            setTopMenuWidth();
+
+
+
+            $(window).resize(setTopMenuWidth)
         });
     </script>
 
 </head>
 <body>
+@yield('yt-background')
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -138,26 +143,16 @@
             </div>
             <div class="container">
                 <div class="menu">
-                    <ul class="top-menu-list">
+                    <ul class="col-md-12 top-menu-list">
                         <li class="top-menu-item">Strona główna</li>
                         <li class="top-menu-item"><a href="{{route('product.show')}}"></a>Produkty</li>
                         <li class="top-menu-item">Kategorie</li>
-                        <li class="top-menu-item">Twoje konto</li>
                         <li class="top-menu-item">Użytkownicy</li>
                         <li class="top-menu-item">Forum</li>
+                        @auth
+                        <li class="top-menu-item">Twoje konto</li>
                         <li class="top-menu-item">Twoje zamówienia</li>
-                        <li class="top-menu-item">
-                            <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                                    Dropdown link
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </li>
+                        @endauth
                     </ul>
                 </div>
                 <span class="js-hidden-count-element"></span>
@@ -165,7 +160,7 @@
         </nav>
     </div>
 
-    <div class="container" >
+    <div class="container">
         @yield('content')
     </div>
 

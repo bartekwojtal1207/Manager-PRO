@@ -2,45 +2,34 @@
 
 @section("title","Personal Manager")
 
+@section('yt-background')
+    @auth
+    <div style="position: fixed; z-index: -99; width: 100%; height: 100%; top:0; left: 0;">
+        <iframe frameborder="0" height="100%" width="100%"
+                src="https://youtube.com/embed/HuN-aeCFOuA?autoplay=1&controls=0&showinfo=0&autohide=1&disablekb=1&fs=0&iv_load_policy=3&modestbranding=3&rel=0&showinfo=0">
+        </iframe>
+    </div>
+    @endauth
+@endsection
+
 @section('content')
 
 @guest
-
     <a href="{{route('login')}}"><h4>Zaloguj się</h4></a>
     <span>Jeżeli nie masz konta <a href="{{route('register')}}">zarejstruj się</a> </span>
 @else
 <div class="row">
     <div class="col-md-12">
-        <h3 style="text-align: center">Witaj {{ \Illuminate\Support\Facades\Auth::user()->name}} !</h3>
+        <h1 class="js-mainpage-title hidden">Witaj {{ \Illuminate\Support\Facades\Auth::user()->name}} !</h1>
+            <div id="msg"></div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="slider" style="width: 250px; height: 250px; margin: auto">
-            <div class="slider-item" style=" height: 190px;">
-                <a href="#" style="width: 100%; height: 100%; display: block">
-                    <img src="{{ asset('img/sliderPhoto/homeOffice2.jpg') }}" alt="edytuj swój profil" class="img-responsive">
-                    <p style="display: block; margin: auto; height: 100%; line-height: 165px" class="text-center">Przejdź do swojego profilu</p>
-                </a>
-            </div>
-            <div class="slider-item" style=" height: 190px;">
-                <a href="{{route('profile.index')}}" >
-                    <img src="{{ asset('img/sliderPhoto/homeOffice2.jpg') }}" alt="edytuj swój profil" class="img-responsive">
-                    <p class="text-center" style="margin-top: 5px; color: indianred; font-weight: bolder">Przejdź do swojego profilu</p>
-                </a>
-            </div>
-            <div class="slider-item" style=" height: 165px;">
-                <a href="{{route('team.index')}}" style="width: 100%; height: 100%; display: block"> <img src="{{ asset('img/sliderPhoto/homeOffice2.jpg') }}" alt="edytuj swój profil" class="img-responsive"></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 @endguest
 
-@section('script-js')
-    {{-- scritpt only for edit profile page--}}
-    <script src="{{ asset('js/mainpage.js') }}"></script>
 @endsection
+
+@section('script-js')
+   @auth
+    <script src="{{ asset('js/mainpage.js') }}"></script>
+   @endauth
 @endsection

@@ -8621,6 +8621,21 @@ h5.category-title {
   height: auto;
 }
 
+@font-face {
+  font-family: OptimusPrinceps;
+  src: url("/public/fonts/vendor/new/PierSans-black.otf");
+}
+
+#msg {
+  position: absolute;
+  top: 300px;
+  left: 33%;
+  color: #000;
+  font-weight: bold;
+  font-family: OptimusPrinceps;
+  font-size: 70px;
+}
+
 .menu {
   width: 90%;
   height: 50px;
@@ -8674,10 +8689,15 @@ h5.category-title {
 
 .js-hidden-count-element {
   display: inline-block;
+  float: right;
   padding: 20px 5px 29px 5px;
   text-align: center;
   height: 41px;
   background-color: #f0ad4e;
   color: #fff;
+}
+
+iframe {
+  pointer-events: none;
 }
 

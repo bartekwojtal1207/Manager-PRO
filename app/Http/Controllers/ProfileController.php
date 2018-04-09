@@ -64,8 +64,9 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $this->userId;
 
+
+        $id = $this->userId;
         $profile = new Profile();
         $profile->getProfile();
 
